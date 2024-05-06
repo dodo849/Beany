@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+import ComposableArchitecture
 import StackCoordinator
 
 enum RecipeLink: LinkProtocol {
@@ -15,7 +16,9 @@ enum RecipeLink: LinkProtocol {
     func matchView() -> any View {
         switch self {
         case .recipeAddView(let coordinator):
-            return RecipeAddView(coordinator: coordinator)
+            return RecipeAddView(
+                coordinator:coordinator
+            )
         }
     }
 }

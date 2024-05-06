@@ -11,7 +11,9 @@ import SwiftData
 @Model
 class Recipe: Equatable, Identifiable {
     
-    @Attribute(.unique) var name: String
+    @Attribute(.unique) 
+    var name: String
+    @Relationship(deleteRule: .cascade)
     var steps: [Step]
     
     init() {
@@ -24,33 +26,14 @@ class Recipe: Equatable, Identifiable {
         self.name = name
         
         var accumulatedSeconds = 0
-        var accumulatedWaterQuantity = 0
-        self.steps = steps.map { step in
-            accumulatedSeconds += step.seconds
-            accumulatedWaterQuantity += step.water
-            
-            return Step(
-                name: step.name,
-                helpText: step.helpText,
-                seconds: step.seconds,
-                accumulatedSeconds: accumulatedSeconds,
-                water: step.water,
-                accumulatedWater: accumulatedWaterQuantity
-            )
-        }
-    }
-    
-    private func calculateCumulative() {
-//        self.steps = self.steps.sorted { $0.order < $1.order }
-        
-        var accumulatedSeconds = 0
         var accumulatedWater = 0
         
-        self.steps = self.steps.map { step in
+        self.steps = steps.map { step in
             accumulatedSeconds += step.seconds
             accumulatedWater += step.water
             
             return Step(
+                order: step.order,
                 name: step.name,
                 helpText: step.helpText,
                 seconds: step.seconds,
@@ -64,6 +47,7 @@ class Recipe: Equatable, Identifiable {
 
 @Model
 class Step: Equatable, Identifiable {
+    var order: Int
     var name: String
     var helpText: String
     var seconds: Int
@@ -72,6 +56,7 @@ class Step: Equatable, Identifiable {
     var accumulatedWater: Int?
     
     init() {
+        self.order = 0
         self.name = ""
         self.helpText = ""
         self.seconds = 0
@@ -79,6 +64,23 @@ class Step: Equatable, Identifiable {
     }
     
     init(
+        order: Int,
+        name: String,
+        helpText: String,
+        seconds: Int,
+        water: Int
+    ) {
+        self.order = order
+        self.name = name
+        self.helpText = helpText
+        self.seconds = seconds
+        self.accumulatedSeconds = 0
+        self.water = water
+        self.accumulatedWater = 0
+    }
+    
+    init(
+        order: Int,
         name: String,
         helpText: String,
         seconds: Int,
@@ -86,6 +88,7 @@ class Step: Equatable, Identifiable {
         water: Int,
         accumulatedWater: Int?
     ) {
+        self.order = order
         self.name = name
         self.helpText = helpText
         self.seconds = seconds
@@ -98,8 +101,8 @@ class Step: Equatable, Identifiable {
 var sampleRecipe: Recipe = .init(name: "기본 레시피", steps: sampleSteps)
 
 var sampleSteps: [Step] = [
-    .init(name: "뜸들이기", helpText: "원두를 충분히 적셔주세요", seconds: 20, accumulatedSeconds: 20, water: 40, accumulatedWater: 40),
-    .init(name: "첫번째 추출", helpText: "가운데부터 균일한 속도로 물을 부어주세요", seconds: 30, accumulatedSeconds: 50, water: 40, accumulatedWater: 80),
-    .init(name: "두번째 추출", helpText: "속도를 조금 높여 물을 부어주세요", seconds: 30, accumulatedSeconds: 80, water: 40, accumulatedWater: 120),
-    .init(name: "세번째 추출", helpText: "시간이 되면 드리퍼 내에 물이 남아있어도 추출을 마무리해주세요", seconds: 30, accumulatedSeconds: 110, water: 40, accumulatedWater: 160),
+    .init(order: 1, name: "뜸들이기", helpText: "원두를 충분히 적셔주세요", seconds: 20, accumulatedSeconds: 20, water: 40, accumulatedWater: 40),
+    .init(order: 2, name: "첫번째 추출", helpText: "가운데부터 균일한 속도로 물을 부어주세요", seconds: 30, accumulatedSeconds: 50, water: 40, accumulatedWater: 80),
+    .init(order: 3, name: "두번째 추출", helpText: "속도를 조금 높여 물을 부어주세요", seconds: 30, accumulatedSeconds: 80, water: 40, accumulatedWater: 120),
+    .init(order: 4, name: "세번째 추출", helpText: "시간이 되면 드리퍼 내에 물이 남아있어도 추출을 마무리해주세요", seconds: 30, accumulatedSeconds: 110, water: 40, accumulatedWater: 160),
 ]

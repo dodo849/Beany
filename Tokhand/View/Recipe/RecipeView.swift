@@ -14,7 +14,7 @@ struct RecipeView: View {
     
     var coordinator: BaseCoordinator<RecipeLink>
     
-    @Query private var recipes: [Recipe]
+    @Query(sort: \Recipe.steps.order) private var recipes: [Recipe]
     
     var body: some View {
         ScrollView {
@@ -40,6 +40,9 @@ struct RecipeView: View {
         .frame(maxWidth: .infinity)
         .foregroundColor(.strongCoffee)
         .background(.coffee.opacity(0.1))
+        .customBackButton {
+            coordinator.path.removeLast()
+        }
     }
 }
 

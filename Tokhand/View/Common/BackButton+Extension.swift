@@ -8,10 +8,15 @@
 import SwiftUI
 
 extension View {
-    func customBackButton() -> some View {
+    func customBackButton(dismissAction: @escaping () -> Void) -> some View {
         return self.navigationBarBackButtonHidden(true)
             .navigationBarItems(
-            leading: Image(systemName: "chevron.backward").foregroundColor(.strongCoffee)
-        )
+                leading: Button(action: {
+                    dismissAction()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.strongCoffee)
+                }
+            )
     }
 }

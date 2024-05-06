@@ -26,6 +26,8 @@
 		BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */; };
 		BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */; };
 		BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */; };
+		BC83D02D2BE8F15B00B2DB6F /* RecipeAddReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */; };
+		BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */; };
 		BC84DBD32BE789DE00374D69 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BC84DBD22BE789DE00374D69 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBuilder.swift; sourceTree = "<group>"; };
 		BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
+		BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddReducer.swift; sourceTree = "<group>"; };
+		BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */,
+				BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */,
 			);
 			path = RecipeAddView;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */,
+				BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC83D02D2BE8F15B00B2DB6F /* RecipeAddReducer.swift in Sources */,
 				BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */,
 				BC6D84A62BE776B100C103E9 /* TimerReducer.swift in Sources */,
 				BC83D0092BE7FF3500B2DB6F /* SoundHelper.swift in Sources */,
@@ -286,6 +293,7 @@
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
 				BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */,
 				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
+				BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */,
 				BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
