@@ -7,33 +7,33 @@
 
 import SwiftUI
 import SwiftData
+
 import ComposableArchitecture
+import StackCoordinator
 
 @main
 struct TokhandApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
+            Recipe.self,
+            Step.self,
             Item.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                TimerView(
-                    store: Store(initialState: TimerReducer.State()) {
-                        TimerReducer()
-                    }
-                )
+            RootBuilder { path in
+                TimerBuilder()
             }
-//            ContentView()
+            //            ContentView()
         }
         .modelContainer(sharedModelContainer)
     }

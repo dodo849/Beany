@@ -1,5 +1,5 @@
 {
-  "originHash" : "81d703dd6e7ef361d922e4159d56e99fa7337762368097761b4ba0ff022b4d31",
+  "originHash" : "e08b62d8e33fae8b448e3afa6c47de07921d59d5a70fb72784e4e3d5e6c588d1",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "stackcoordinator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dodo849/StackCoordinator.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0a15646505800a5e8846e18de489bea7e6a80ab6"
       }
     },
     {

@@ -7,23 +7,7 @@
 
 import Foundation
 import ComposableArchitecture
-
-struct Stage: Equatable {
-    var order: Int
-    var name: String
-    var description: String
-    var seconds: Int
-    var accumulatedSeconds: Int
-    var waterQuantity: Int
-    var accumulatedWaterQuantity: Int
-}
-
-var stages: [Stage] = [
-    .init(order: 0, name: "뜸들이기", description: "원두를 충분히 적셔주세요", seconds: 20, accumulatedSeconds: 20, waterQuantity: 40, accumulatedWaterQuantity: 40),
-    .init(order: 1, name: "첫번째 추출", description: "가운데부터 균일한 속도로 물을 부어주세요", seconds: 30, accumulatedSeconds: 50, waterQuantity: 40, accumulatedWaterQuantity: 80),
-    .init(order: 2, name: "두번째 추출", description: "속도를 조금 높여 물을 부어주세요", seconds: 30, accumulatedSeconds: 80, waterQuantity: 40, accumulatedWaterQuantity: 120),
-        .init(order: 3, name: "세번째 추출", description: "시간이 되면 드리퍼 내에 물이 남아있어도 추출을 마무리해주세요", seconds: 30, accumulatedSeconds: 110, waterQuantity: 40, accumulatedWaterQuantity: 160),
-]
+import AVFoundation
 
 @Reducer
 struct TimerReducer {
@@ -31,7 +15,7 @@ struct TimerReducer {
     struct State: Equatable {
         var isTimerActive = false
         var secondsElapsed = 0
-        var currentStage: Stage = stages[0]
+        var currentStep: Step = sampleSteps[0]
     }
     
     enum Action {
@@ -48,6 +32,7 @@ struct TimerReducer {
         Reduce { state, action in
             switch action {
             case .startTimer:
+                AudioServicesPlaySystemSound(1105)
                 state.isTimerActive.toggle()
                 return .run { [isTimerActive = state.isTimerActive] send in
                     guard isTimerActive else { return }
@@ -58,15 +43,24 @@ struct TimerReducer {
                 .cancellable(id: CancelID.timer, cancelInFlight: true)
                 
             case .stopTimer:
+                state.secondsElapsed = 0
+                state.currentStep = sampleSteps[0]
                 return .cancel(id: CancelID.timer)
                 
             case .timerTicked:
                 state.secondsElapsed += 1
-                if state.secondsElapsed >= stages.last!.accumulatedSeconds {
+                
+                guard let accumulatedSeconds = sampleSteps.last!.accumulatedSeconds
+                else { return .none }
+                
+                if state.secondsElapsed >= accumulatedSeconds {
                     return .send(.stopTimer)
                 }
-                if state.secondsElapsed > state.currentStage.accumulatedSeconds {
-                    state.currentStage = stages[state.currentStage.order + 1]
+                if state.secondsElapsed > accumulatedSeconds {
+                    if let index = sampleSteps.firstIndex(of: state.currentStep), index < sampleSteps.count - 1 {
+                        state.currentStep = sampleSteps[index + 1]
+                    }
+                    
                 }
                 return .none
                 
