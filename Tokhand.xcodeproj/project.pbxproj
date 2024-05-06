@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21552BE94AB600D0DD1B /* Step.swift */; };
 		BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84752BE7720D00C103E9 /* TokhandApp.swift */; };
 		BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84772BE7720D00C103E9 /* ContentView.swift */; };
 		BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84792BE7720D00C103E9 /* Item.swift */; };
@@ -26,12 +27,14 @@
 		BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */; };
 		BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */; };
 		BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */; };
-		BC83D02D2BE8F15B00B2DB6F /* RecipeAddReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */; };
 		BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */; };
 		BC84DBD32BE789DE00374D69 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BC84DBD22BE789DE00374D69 /* ComposableArchitecture */; };
+		BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D002BE9301700059E67 /* RecipeTitleView.swift */; };
+		BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC1D21552BE94AB600D0DD1B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		BC6D84722BE7720D00C103E9 /* Tokhand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokhand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6D84752BE7720D00C103E9 /* TokhandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokhandApp.swift; sourceTree = "<group>"; };
 		BC6D84772BE7720D00C103E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,8 +54,9 @@
 		BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBuilder.swift; sourceTree = "<group>"; };
 		BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
-		BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddReducer.swift; sourceTree = "<group>"; };
 		BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
+		BCD52D002BE9301700059E67 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
+		BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				BC83D0122BE88FC800B2DB6F /* Recipe.swift */,
+				BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */,
+				BC1D21552BE94AB600D0DD1B /* Step.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -170,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */,
-				BC83D02C2BE8F15B00B2DB6F /* RecipeAddReducer.swift */,
 			);
 			path = RecipeAddView;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */,
+				BCD52D002BE9301700059E67 /* RecipeTitleView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -277,10 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC83D02D2BE8F15B00B2DB6F /* RecipeAddReducer.swift in Sources */,
 				BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */,
 				BC6D84A62BE776B100C103E9 /* TimerReducer.swift in Sources */,
 				BC83D0092BE7FF3500B2DB6F /* SoundHelper.swift in Sources */,
+				BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */,
 				BC83D00C2BE8894D00B2DB6F /* WaveView.swift in Sources */,
 				BC83D0182BE8941200B2DB6F /* TimerBuilder.swift in Sources */,
 				BC83D01A2BE8942600B2DB6F /* TimerLink.swift in Sources */,
@@ -292,7 +298,9 @@
 				BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */,
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
 				BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */,
+				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
 				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
+				BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */,
 				BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */,
 				BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */,
 			);

@@ -57,7 +57,7 @@ struct TimerView: View {
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                         .animation(.none, value: store.secondsElapsed)
                     Spacer()
-                    Text("현재까지 \(store.currentStep.accumulatedWater ?? 0)ml 추출")
+                    Text("총 \(store.currentStep.accumulatedWater ?? 0)ml 추출 중")
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                     Spacer()
                         .frame(height: 30)
@@ -118,6 +118,9 @@ struct TimerView: View {
         }
         .onTapGesture {
             store.send(.startTimer)
+        }
+        .onAppear() {
+            store.send(.onAppear)
         }
         .onDisappear() {
             store.send(.stopTimer)

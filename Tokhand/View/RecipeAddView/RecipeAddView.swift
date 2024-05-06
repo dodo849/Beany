@@ -12,6 +12,7 @@ import StackCoordinator
 
 
 struct RecipeAddView: View {
+    // MARK: Model
     struct StepInputModel: Equatable, Identifiable {
         var id: UUID = UUID()
         var name: String
@@ -26,9 +27,12 @@ struct RecipeAddView: View {
             self.helpText = ""
         }
     }
+    
+    // MARK: Dependencies
     @Environment(\.modelContext) var context
     var coordinator: BaseCoordinator<RecipeLink>
     
+    // MARK: State
     @State var recipeName = ""
     @State var steps: [StepInputModel] = [StepInputModel()]
     
@@ -45,8 +49,8 @@ struct RecipeAddView: View {
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         Spacer()
                     }
-                    TextField("레시피를 구분할 이름을 작성해주세요", text: $recipeName)
-                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        TextField("레시피를 구분할 이름을 작성해주세요(선택)", text: $recipeName)
+                            .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
                 
                 Divider().padding(.vertical, 10)
@@ -90,7 +94,7 @@ struct RecipeAddView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 15, height: 15)
-                                TextField("추출 시 참고할 도움말을 작성해주세요", text: $steps[index].helpText)
+                                TextField("추출 시 참고할 도움말을 작성해주세요(선택)", text: $steps[index].helpText)
                             }
                             HStack {
                                 Button(action: addStep) {
@@ -162,14 +166,14 @@ struct RecipeAddView: View {
         let newRecipe = Recipe(
             name: recipeName,
             steps: steps.enumerated().map { (index, item) in
-            Step(
-                order: index,
-                name: item.name,
-                helpText: item.helpText,
-                seconds: Int(item.seconds) ?? 0,
-                water: Int(item.water) ?? 0
-            )
-        })
+                Step(
+                    order: index,
+                    name: item.name,
+                    helpText: item.helpText,
+                    seconds: Int(item.seconds) ?? 0,
+                    water: Int(item.water) ?? 0
+                )
+            })
         context.insert(newRecipe)
     }
     

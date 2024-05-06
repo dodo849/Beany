@@ -10,11 +10,12 @@ import SwiftData
 
 @Model
 class Recipe: Equatable, Identifiable {
-    
-    @Attribute(.unique) 
+    @Attribute(.unique)
+    let id: UUID = UUID()
     var name: String
-    @Relationship(deleteRule: .cascade)
+    @Relationship
     var steps: [Step]
+    let createdAt: Date = Date.now
     
     init() {
         self.name = ""
@@ -28,73 +29,22 @@ class Recipe: Equatable, Identifiable {
         var accumulatedSeconds = 0
         var accumulatedWater = 0
         
-        self.steps = steps.map { step in
-            accumulatedSeconds += step.seconds
-            accumulatedWater += step.water
-            
-            return Step(
-                order: step.order,
-                name: step.name,
-                helpText: step.helpText,
-                seconds: step.seconds,
-                accumulatedSeconds: accumulatedSeconds,
-                water: step.water,
-                accumulatedWater: accumulatedWater
-            )
-        }
-    }
-}
-
-@Model
-class Step: Equatable, Identifiable {
-    var order: Int
-    var name: String
-    var helpText: String
-    var seconds: Int
-    var accumulatedSeconds: Int?
-    var water: Int
-    var accumulatedWater: Int?
-    
-    init() {
-        self.order = 0
-        self.name = ""
-        self.helpText = ""
-        self.seconds = 0
-        self.water = 0
-    }
-    
-    init(
-        order: Int,
-        name: String,
-        helpText: String,
-        seconds: Int,
-        water: Int
-    ) {
-        self.order = order
-        self.name = name
-        self.helpText = helpText
-        self.seconds = seconds
-        self.accumulatedSeconds = 0
-        self.water = water
-        self.accumulatedWater = 0
-    }
-    
-    init(
-        order: Int,
-        name: String,
-        helpText: String,
-        seconds: Int,
-        accumulatedSeconds: Int?,
-        water: Int,
-        accumulatedWater: Int?
-    ) {
-        self.order = order
-        self.name = name
-        self.helpText = helpText
-        self.seconds = seconds
-        self.accumulatedSeconds = accumulatedSeconds
-        self.water = water
-        self.accumulatedWater = accumulatedWater
+        self.steps = steps
+            .sorted(by: { $0.order < $1.order })
+            .map { step in
+                accumulatedSeconds += step.seconds
+                accumulatedWater += step.water
+                
+                return Step(
+                    order: step.order,
+                    name: step.name,
+                    helpText: step.helpText,
+                    seconds: step.seconds,
+                    accumulatedSeconds: accumulatedSeconds,
+                    water: step.water,
+                    accumulatedWater: accumulatedWater
+                )
+            }
     }
 }
 

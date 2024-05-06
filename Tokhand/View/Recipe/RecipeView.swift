@@ -14,25 +14,22 @@ struct RecipeView: View {
     
     var coordinator: BaseCoordinator<RecipeLink>
     
-    @Query(sort: \Recipe.steps.order) private var recipes: [Recipe]
+    @Query(sort: \Recipe.createdAt)
+    private var recipes: [Recipe]
     
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    Text("레시피")
-                        .font(.system(size: 24, weight: .bold, design: .rounded))
-                    Spacer()
-                    Image(systemName: "plus")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
+                RecipeTitleView(plusAction: { coordinator.push(.recipeAddView(coordinator))
+                })
+                ForEach(recipes) { recipe in
+                    RecipeRowView(recipe: recipe)
                         .onTapGesture {
-                            coordinator.push(.recipeAddView(coordinator))
+                            UserDefaults.standard.setValue(
+                                recipe.id.uuidString,
+                                forKey: UserDefaultConstant.selectedRecipeId
+                            )
                         }
-                }
-                ForEach(recipes) {
-                    RecipeRowView(recipe: $0)
                 }
             }
         }
