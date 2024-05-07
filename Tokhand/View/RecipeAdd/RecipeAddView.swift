@@ -15,17 +15,10 @@ struct RecipeAddView: View {
     // MARK: Model
     struct StepInputModel: Equatable, Identifiable {
         var id: UUID = UUID()
-        var name: String
-        var seconds: String
-        var water: String
-        var helpText: String
-        
-        init() {
-            self.name = ""
-            self.seconds = ""
-            self.water = ""
-            self.helpText = ""
-        }
+        var name: String = ""
+        var seconds: String = "1"
+        var water: String = "1"
+        var helpText: String = ""
     }
     
     // MARK: Dependencies
@@ -49,8 +42,8 @@ struct RecipeAddView: View {
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         Spacer()
                     }
-                        TextField("레시피를 구분할 이름을 작성해주세요(선택)", text: $recipeName)
-                            .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    TextField("레시피를 구분할 이름을 작성해주세요(선택)", text: $recipeName)
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
                 
                 Divider().padding(.vertical, 10)
@@ -59,7 +52,7 @@ struct RecipeAddView: View {
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                 VStack {
                     ForEach(steps.indices, id: \.self) { index in
-                        VStack {
+                        VStack() {
                             HStack {
                                 Image(systemName: "list.bullet")
                                     .resizable()
@@ -68,23 +61,37 @@ struct RecipeAddView: View {
                                 TextField("순서 혹은 단계 이름을 입력해주세요(선택)", text: $steps[index].name)
                             }
                             Spacer()
-                            HStack {
-                                Image(systemName: "clock")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 14, height: 14)
+                            HStack(alignment: .center) {
+                                ZStack {
+                                    HStack {
+                                        Image(systemName: "clock")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 14, height: 14)
+                                        TextField("시간", text: Binding(
+                                            get: { self.steps[index].seconds },
+                                            set: { newValue in
+                                                self.steps[index].seconds = "1"
+                                            }
+                                        ))
+                                        .keyboardType(.numberPad)
+                                        Text("초")
+                                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    }
+                                }
                                 
-                                TextField("시간", text: $steps[index].seconds)
-                                    .keyboardType(.numberPad)
-                                Text("초")
-                                    .font(.system(size: 16, weight: .medium, design: .rounded))
                                 Divider()
                                 Image(systemName: "drop")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 16, height: 16)
                                     .frame(maxWidth: 15)
-                                TextField("물 양", text:  $steps[index].water)
+                                TextField("물 양", text:  Binding(
+                                    get: { self.steps[index].water },
+                                    set: { newValue in
+                                        self.steps[index].water = "1"
+                                    }
+                                ))
                                     .keyboardType(.numberPad)
                                 Text("ml")
                                     .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -135,7 +142,8 @@ struct RecipeAddView: View {
                 }
             }
         }
-        .padding()
+//        .padding()
+        .padding(.horizontal, 15)
         .frame(maxWidth: .infinity)
         .foregroundColor(.strongCoffee)
         .scrollIndicators(.hidden)
@@ -151,6 +159,7 @@ struct RecipeAddView: View {
                 }
             }
         }
+        .toolbarBackground(Color.white, for: .navigationBar)
     }
     
     func addStep() {

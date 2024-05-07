@@ -22,31 +22,16 @@ struct TimerView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let currentWaterSpeed = CGFloat(store.currentStep.water + 5) / CGFloat(store.currentStep.seconds)
+            let currentWaterSpeed = CGFloat(store.currentStep.water) / CGFloat(store.currentStep.seconds)
             let currentSecondElapsed = CGFloat(store.secondsElapsed + store.currentStep.seconds - (store.currentStep.accumulatedSeconds ?? 0))
             let previousAccumulatedWater = CGFloat(store.currentStep.accumulatedWater ?? 0) - CGFloat( store.currentStep.water)
             let currentWater = currentWaterSpeed * (currentSecondElapsed) + previousAccumulatedWater
             let waterHeight = UIScreen.main.bounds.size.height * 1.5 - UIScreen.main.bounds.size.height * (currentWater / CGFloat(store.totalWater))
-            let safeAreaAdjustment = waterHeight <= 0 ? waterHeight + (UIScreen.main.bounds.size.height - geometry.size.height) : waterHeight - bottomBarHeight + bottomBarHeight * 1.1
-            VStack{
-                Text("currentWaterSpeed \(currentWaterSpeed)")
-                Text("currentSecondElapsed \(currentSecondElapsed)")
-                Text("previousAccumulatedWater \(previousAccumulatedWater)")
-                Text("currentWater \(currentWater)")
-                Text("waterHeight \(waterHeight)")
-                Text("store.currentStep.accumulatedWater \(store.currentStep.accumulatedWater)")
-                Text("store.currentStep.water \(store.currentStep.water)")
-                Text("UIScreen.main.bounds.size.height \(UIScreen.main.bounds.size.height)")
-                Text("geometry \(geometry.size.height)")
-                Text("\(UIScreen.main.bounds.size.height * (40 / 60))")
-                Text("\(UIScreen.main.bounds.size.height * (currentWater / CGFloat(store.totalWater)))")
-            }
-            .foregroundColor(.black)
             Group {
                 WaveView(waveOffset: store.secondsElapsed)
                     .position(x: UIScreen.main.bounds.size.width/2, y: waterHeight)
                     .frame(maxWidth: .infinity)
-                    .animation(.bouncy, value: store.secondsElapsed)
+                    .animation(.linear(duration: 1), value: store.secondsElapsed)
                 MeasurementView(max: store.totalWater)
                 VStack(spacing: 7) {
                     Spacer().frame(height: topBarHeight)
@@ -83,7 +68,7 @@ struct TimerView: View {
                     Text("총 \(store.currentStep.accumulatedWater ?? 0)ml 추출 중")
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                     Spacer()
-                        .frame(height: 30)
+                        .frame(height: 50)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .foregroundColor(.strongCoffee)
@@ -111,6 +96,9 @@ struct TimerView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 22, height: 22)
+                                .onTapGesture {
+                                    coordinator.push(.settingView)
+                                }
                         }
                         Spacer()
                     }

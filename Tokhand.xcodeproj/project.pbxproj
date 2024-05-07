@@ -36,6 +36,7 @@
 		BC84DBD32BE789DE00374D69 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BC84DBD22BE789DE00374D69 /* ComposableArchitecture */; };
 		BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D002BE9301700059E67 /* RecipeTitleView.swift */; };
 		BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */; };
+		BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CC2BEA938A0029A463 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		BCD52D002BE9301700059E67 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
 		BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConstant.swift; sourceTree = "<group>"; };
+		BCE436CC2BEA938A0029A463 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				BC83D0292BE8C5A500B2DB6F /* Common */,
-				BC83D01D2BE8AE5C00B2DB6F /* RecipeAddView */,
+				BCE436CA2BEA935F0029A463 /* Setting */,
+				BC83D01D2BE8AE5C00B2DB6F /* RecipeAdd */,
 				BC83D00E2BE88CAE00B2DB6F /* Recipe */,
 				BC6D84A42BE7769D00C103E9 /* Timer */,
 			);
@@ -186,12 +189,12 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		BC83D01D2BE8AE5C00B2DB6F /* RecipeAddView */ = {
+		BC83D01D2BE8AE5C00B2DB6F /* RecipeAdd */ = {
 			isa = PBXGroup;
 			children = (
 				BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */,
 			);
-			path = RecipeAddView;
+			path = RecipeAdd;
 			sourceTree = "<group>";
 		};
 		BC83D0262BE8B06F00B2DB6F /* SubView */ = {
@@ -218,6 +221,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCE436CA2BEA935F0029A463 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BCE436CC2BEA938A0029A463 /* SettingView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +330,7 @@
 				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
 				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
 				BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */,
+				BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */,
 				BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */,
 				BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */,
 				BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */,

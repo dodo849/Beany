@@ -17,25 +17,39 @@ struct RecipeRowView: View {
     var body: some View {
         let lastStep = recipe.steps
             .last(where: { $0.order == recipe.steps.count - 1 }) ?? Step()
-        VStack {
-            Spacer().frame(minHeight: 20)
-            HStack {
-                if !recipe.name.isEmpty {
+        VStack(spacing: 7) {
+            Spacer().frame(minHeight: 10)
+            if !recipe.name.isEmpty {
+                HStack {
                     Text("\(recipe.name)")
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    Spacer()
                 }
+            }
+            
+            HStack {
                 Group {
                     Text("\(recipe.author.description)")
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 4)
+                        .background(.gray.opacity(0.2))
+                        .cornerRadius(5)
                     Text("소요시간 \(TimeFormatHelper.secondsToTimeString(lastStep.accumulatedSeconds ?? 0))")
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 4)
+                        .background(.coffee.opacity(0.1))
+                        .cornerRadius(5)
                     Text("추출양 \(lastStep.accumulatedWater ?? 0)ml")
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 4)
+                        .background(.blue.opacity(0.1))
+                        .cornerRadius(5)
                 }
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .padding(.horizontal, 7)
-                .padding(.vertical, 4)
-                .background(.gray.opacity(0.2))
                 .cornerRadius(5)
                 Spacer()
             }
+            
             HStack(spacing: 10) {
                 VStack() {
                     Image(systemName: "clock.fill")

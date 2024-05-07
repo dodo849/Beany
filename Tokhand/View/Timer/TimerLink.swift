@@ -11,11 +11,14 @@ import StackCoordinator
 
 enum TimerLink: LinkProtocol {
     case recipeView
+    case settingView
     
     func matchView() -> any View {
         switch self {
         case .recipeView:
             return RecipeBuilder()
+        case .settingView:
+            return SettingView()
         }
     }
 }

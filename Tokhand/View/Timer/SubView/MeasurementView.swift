@@ -12,14 +12,15 @@ struct MeasurementView: View {
     let max: Int
 
     var body: some View {
-        VStack() {
+        VStack(spacing: 0) {
             ForEach(Array(stride(from: 0, to: max, by: 10)).reversed(), id: \.self) { index in
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
-                    HStack(alignment: .center) {
+                    HStack(alignment: .bottom) {
                         Spacer()
                         if index % 20 == 0 && index != 0 {
                             Text("\(index)ml")
+                                .offset(x: 0, y: 5)
                                 .font(.system(size: 10))
                                 .foregroundColor(.strongCoffee.opacity(0.5))
                         }
@@ -32,7 +33,7 @@ struct MeasurementView: View {
             }
                 
         }
-//        .ignoresSafeArea()
+        .ignoresSafeArea()
         .frame(maxHeight: .infinity)
     }
 }
