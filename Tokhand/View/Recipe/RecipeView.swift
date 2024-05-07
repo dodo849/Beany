@@ -20,8 +20,10 @@ struct RecipeView: View {
     var body: some View {
         ScrollView {
             VStack {
-                RecipeTitleView(plusAction: { coordinator.push(.recipeAddView(coordinator))
+                RecipeTitleView(plusAction: {
+                    coordinator.push(.recipeAddView)
                 })
+                .padding([.top, .horizontal], PAGE_PADDING)
                 ForEach(recipes) { recipe in
                     RecipeRowView(recipe: recipe)
                         .onTapGesture {
@@ -33,7 +35,7 @@ struct RecipeView: View {
                 }
             }
         }
-        .padding()
+//        .padding()
         .frame(maxWidth: .infinity)
         .foregroundColor(.strongCoffee)
         .background(.coffee.opacity(0.1))

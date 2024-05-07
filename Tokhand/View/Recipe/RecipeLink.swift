@@ -11,14 +11,12 @@ import ComposableArchitecture
 import StackCoordinator
 
 enum RecipeLink: LinkProtocol {
-    case recipeAddView(_ coordinator: BaseCoordinator<RecipeLink>)
+    case recipeAddView
     
     func matchView() -> any View {
         switch self {
-        case .recipeAddView(let coordinator):
-            return RecipeAddView(
-                coordinator:coordinator
-            )
+        case .recipeAddView:
+            return RecipeAddView()
         }
     }
 }

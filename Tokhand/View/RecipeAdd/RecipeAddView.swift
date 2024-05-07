@@ -15,15 +15,22 @@ struct RecipeAddView: View {
     // MARK: Model
     struct StepInputModel: Equatable, Identifiable {
         var id: UUID = UUID()
-        var name: String = ""
-        var seconds: String = "1"
-        var water: String = "1"
-        var helpText: String = ""
+        var name: String
+        var seconds: String
+        var water: String
+        var helpText: String
+        
+        init() {
+            self.name = ""
+            self.seconds = "1"
+            self.water = "1"
+            self.helpText = ""
+        }
     }
     
     // MARK: Dependencies
     @Environment(\.modelContext) var context
-    var coordinator: BaseCoordinator<RecipeLink>
+    var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     // MARK: State
     @State var recipeName = ""
@@ -71,7 +78,9 @@ struct RecipeAddView: View {
                                         TextField("시간", text: Binding(
                                             get: { self.steps[index].seconds },
                                             set: { newValue in
-                                                self.steps[index].seconds = "1"
+                                                if let value = Int(newValue), value < 1 {
+                                                    self.steps[index].seconds = "1"
+                                                }
                                             }
                                         ))
                                         .keyboardType(.numberPad)
@@ -89,7 +98,9 @@ struct RecipeAddView: View {
                                 TextField("물 양", text:  Binding(
                                     get: { self.steps[index].water },
                                     set: { newValue in
-                                        self.steps[index].water = "1"
+                                        if let value = Int(newValue), value < 1 {
+                                            self.steps[index].water = "1"
+                                        }
                                     }
                                 ))
                                     .keyboardType(.numberPad)
@@ -104,7 +115,7 @@ struct RecipeAddView: View {
                                 TextField("추출 시 참고할 도움말을 작성해주세요(선택)", text: $steps[index].helpText)
                             }
                             HStack {
-                                Button(action: addStep) {
+                                Button(action: { addStep(index) }) {
                                     Text("추가 하기")
                                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                                         .animation(.none, value: steps)
@@ -142,8 +153,7 @@ struct RecipeAddView: View {
                 }
             }
         }
-//        .padding()
-        .padding(.horizontal, 15)
+        .padding(.horizontal, PAGE_PADDING)
         .frame(maxWidth: .infinity)
         .foregroundColor(.strongCoffee)
         .scrollIndicators(.hidden)
@@ -162,8 +172,8 @@ struct RecipeAddView: View {
         .toolbarBackground(Color.white, for: .navigationBar)
     }
     
-    func addStep() {
-        steps.append(.init())
+    func addStep(_ index: Int) {
+        steps.insert(StepInputModel(), at: index)
     }
     
     func removeStep(_ index: Int) {

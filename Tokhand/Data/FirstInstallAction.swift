@@ -12,7 +12,9 @@ final class FirstInstallAction {
     
     static let shared = FirstInstallAction()
     
-    private init() {}
+    private init() {
+        self.defaultRecipeId = defaultRecipe.id
+    }
     
     private var context = sharedModelContainer.mainContext
     
@@ -25,6 +27,7 @@ final class FirstInstallAction {
         ],
         author: .admin
     )
+    let defaultRecipeId: UUID
     
     
     func excute() {

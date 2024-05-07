@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+let PAGE_PADDING: CGFloat = 15
