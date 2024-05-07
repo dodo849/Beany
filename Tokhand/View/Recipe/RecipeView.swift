@@ -41,6 +41,7 @@ struct RecipeView: View {
             coordinator.path.removeLast()
         }
     }
+    
 }
 
 #Preview {

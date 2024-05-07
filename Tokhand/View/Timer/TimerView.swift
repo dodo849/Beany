@@ -13,6 +13,8 @@ import StackCoordinator
 
 struct TimerView: View {
     let WAVE_CIRCLE_SIZE: CGFloat = 400
+    let topBarHeight = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    let bottomBarHeight = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
     
     var coordinator: BaseCoordinator<TimerLink>
     
@@ -20,13 +22,34 @@ struct TimerView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            let currentWaterSpeed = CGFloat(store.currentStep.water + 5) / CGFloat(store.currentStep.seconds)
+            let currentSecondElapsed = CGFloat(store.secondsElapsed + store.currentStep.seconds - (store.currentStep.accumulatedSeconds ?? 0))
+            let previousAccumulatedWater = CGFloat(store.currentStep.accumulatedWater ?? 0) - CGFloat( store.currentStep.water)
+            let currentWater = currentWaterSpeed * (currentSecondElapsed) + previousAccumulatedWater
+            let waterHeight = UIScreen.main.bounds.size.height * 1.5 - UIScreen.main.bounds.size.height * (currentWater / CGFloat(store.totalWater))
+            let safeAreaAdjustment = waterHeight <= 0 ? waterHeight + (UIScreen.main.bounds.size.height - geometry.size.height) : waterHeight - bottomBarHeight + bottomBarHeight * 1.1
+            VStack{
+                Text("currentWaterSpeed \(currentWaterSpeed)")
+                Text("currentSecondElapsed \(currentSecondElapsed)")
+                Text("previousAccumulatedWater \(previousAccumulatedWater)")
+                Text("currentWater \(currentWater)")
+                Text("waterHeight \(waterHeight)")
+                Text("store.currentStep.accumulatedWater \(store.currentStep.accumulatedWater)")
+                Text("store.currentStep.water \(store.currentStep.water)")
+                Text("UIScreen.main.bounds.size.height \(UIScreen.main.bounds.size.height)")
+                Text("geometry \(geometry.size.height)")
+                Text("\(UIScreen.main.bounds.size.height * (40 / 60))")
+                Text("\(UIScreen.main.bounds.size.height * (currentWater / CGFloat(store.totalWater)))")
+            }
+            .foregroundColor(.black)
             Group {
                 WaveView(waveOffset: store.secondsElapsed)
+                    .position(x: UIScreen.main.bounds.size.width/2, y: waterHeight)
                     .frame(maxWidth: .infinity)
-                    .offset(x: 0, y: geometry.size.height - geometry.size.height * CGFloat(store.secondsElapsed) / 100)
                     .animation(.bouncy, value: store.secondsElapsed)
-                
+                MeasurementView(max: store.totalWater)
                 VStack(spacing: 7) {
+                    Spacer().frame(height: topBarHeight)
                     Spacer()
                         .frame(height: 30)
                     Text(store.currentStep.name)
@@ -47,13 +70,13 @@ struct TimerView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 16, height: 16)
-                        Text("\(store.currentStep.seconds)초")
+                        Text("\(TimeFormatHelper.secondsToTimeString(store.currentStep.seconds))")
                     }
                     .font(.system(size: 18, weight: .bold, design: .rounded))
-                    Text("\(store.secondsElapsed)초")
+                    Text("\(TimeFormatHelper.secondsToTimeString(store.secondsElapsed))")
                         .font(.system(size: 50, weight: .bold, design: .rounded))
                         .animation(.none, value: store.secondsElapsed)
-                    Text("\(store.currentStep.accumulatedSeconds ?? 0)초 까지")
+                    Text("\(TimeFormatHelper.secondsToTimeString(store.currentStep.accumulatedSeconds ?? 0)) 까지")
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                         .animation(.none, value: store.secondsElapsed)
                     Spacer()
@@ -61,20 +84,20 @@ struct TimerView: View {
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                     Spacer()
                         .frame(height: 30)
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .foregroundColor(.strongCoffee)
-                //                .blendMode(.exclusion)
+                .background(.coffee.opacity(0.1))
+//                .blendMode(.exclusion)
                 
             }
-            .background(.coffee.opacity(0.1))
-            .blur(radius: store.isTimerActive ? 0 : 15)
-            .animation(.interpolatingSpring, value: store.isTimerActive)
+            .blur(radius: store.timerState == .active ? 0 : 15)
+            .animation(.interpolatingSpring, value: store.timerState)
             
-            if !store.isTimerActive {
+            if store.timerState != .active {
                 ZStack {
                     VStack {
+                        Spacer().frame(height: topBarHeight)
                         HStack(spacing: 15){
                             Spacer()
                             Image(systemName: "cup.and.saucer")
@@ -93,37 +116,56 @@ struct TimerView: View {
                     }
                     VStack {
                         Spacer()
-                        Text("탭하면 시작합니다")
-                            .font(.system(size: 20, weight: .black, design: .rounded))
+                        let timerText = {
+                            switch (store.timerState) {
+                            case .ready:
+                                return "탭하면 시작합니다"
+                            case .paused:
+                                return "탭하면 재개합니다"
+                            case .complete:
+                                return "추출이 완료되었습니다. \n맛있게 드세요!"
+                            case .active:
+                                return ""
+                            }
+                        }()
+                        Text(timerText)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.system(size: 20, weight: .semibold, design: .rounded))
                             .blendMode(.plusDarker)
-                        Button(action: { store.send(.stopTimer) }) {
-                            Text("리셋")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        if store.timerState != .ready {
+                            Button(action: { store.send(.resetTimer) }) {
+                                Image(systemName: "arrow.clockwise")
+                            }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 25)
+                            .foregroundColor(.white)
+                            .background(.strongCoffee)
+                            .cornerRadius(100)
                         }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 25)
-                        .foregroundColor(.white)
-                        .background(.strongCoffee)
-                        .cornerRadius(100)
-                        Spacer()
                         Spacer()
                     }
                 }
                 .padding(.horizontal)
                 .foregroundColor(.strongCoffee)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .animation(.default, value: store.isTimerActive)
+                .animation(.default, value: store.timerState)
             }
             
         }
+        .ignoresSafeArea()
         .onTapGesture {
-            store.send(.startTimer)
+            if store.timerState == .complete {
+                
+            } else {
+                store.send(.startTimer)
+            }
         }
         .onAppear() {
             store.send(.onAppear)
         }
         .onDisappear() {
-            store.send(.stopTimer)
+            store.send(.resetTimer)
         }
     }
     

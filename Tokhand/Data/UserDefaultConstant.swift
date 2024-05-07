@@ -9,4 +9,5 @@ import Foundation
 
 final class UserDefaultConstant {
     static let selectedRecipeId = "selectedRecipeId"
+    static let isFirstInstall = "isFirstInstall"
 }

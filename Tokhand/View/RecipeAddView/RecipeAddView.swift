@@ -65,7 +65,7 @@ struct RecipeAddView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 14, height: 14)
-                                TextField("순서 혹은 단계 이름을 입력해주세요", text: $steps[index].name)
+                                TextField("순서 혹은 단계 이름을 입력해주세요(선택)", text: $steps[index].name)
                             }
                             Spacer()
                             HStack {

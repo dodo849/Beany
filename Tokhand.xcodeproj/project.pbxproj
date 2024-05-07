@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21552BE94AB600D0DD1B /* Step.swift */; };
+		BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */; };
+		BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21592BEA147400D0DD1B /* Author.swift */; };
+		BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */; };
+		BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */; };
+		BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */; };
 		BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84752BE7720D00C103E9 /* TokhandApp.swift */; };
 		BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84772BE7720D00C103E9 /* ContentView.swift */; };
 		BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84792BE7720D00C103E9 /* Item.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		BC1D21552BE94AB600D0DD1B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInstallAction.swift; sourceTree = "<group>"; };
+		BC1D21592BEA147400D0DD1B /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatHelper.swift; sourceTree = "<group>"; };
+		BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorView.swift; sourceTree = "<group>"; };
+		BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
 		BC6D84722BE7720D00C103E9 /* Tokhand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokhand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6D84752BE7720D00C103E9 /* TokhandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokhandApp.swift; sourceTree = "<group>"; };
 		BC6D84772BE7720D00C103E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D0082BE7FF3500B2DB6F /* SoundHelper.swift */,
+				BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -136,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D00B2BE8894D00B2DB6F /* WaveView.swift */,
+				BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -168,6 +180,8 @@
 				BC83D0122BE88FC800B2DB6F /* Recipe.swift */,
 				BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */,
 				BC1D21552BE94AB600D0DD1B /* Step.swift */,
+				BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */,
+				BC1D21592BEA147400D0DD1B /* Author.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -194,6 +208,7 @@
 			children = (
 				BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */,
 				BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */,
+				BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -285,6 +300,8 @@
 			files = (
 				BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */,
 				BC6D84A62BE776B100C103E9 /* TimerReducer.swift in Sources */,
+				BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */,
+				BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */,
 				BC83D0092BE7FF3500B2DB6F /* SoundHelper.swift in Sources */,
 				BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */,
 				BC83D00C2BE8894D00B2DB6F /* WaveView.swift in Sources */,
@@ -296,10 +313,13 @@
 				BC83D0232BE8AE9600B2DB6F /* RecipeLink.swift in Sources */,
 				BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */,
 				BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */,
+				BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */,
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
 				BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */,
 				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
 				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
+				BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */,
+				BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */,
 				BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */,
 				BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */,
 				BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */,

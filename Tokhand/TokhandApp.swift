@@ -34,6 +34,9 @@ struct TokhandApp: App {
                 TimerBuilder()
             }
             //            ContentView()
+            .onAppear {
+                FirstInstallAction.shared.excute()
+            }
         }
         .modelContainer(sharedModelContainer)
     }
