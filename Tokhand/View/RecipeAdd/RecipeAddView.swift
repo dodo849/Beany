@@ -80,6 +80,8 @@ struct RecipeAddView: View {
                                             set: { newValue in
                                                 if let value = Int(newValue), value < 1 {
                                                     self.steps[index].seconds = "1"
+                                                } else {
+                                                    self.steps[index].seconds = newValue
                                                 }
                                             }
                                         ))
@@ -100,6 +102,8 @@ struct RecipeAddView: View {
                                     set: { newValue in
                                         if let value = Int(newValue), value < 1 {
                                             self.steps[index].water = "1"
+                                        } else {
+                                            self.steps[index].water = newValue
                                         }
                                     }
                                 ))
@@ -173,7 +177,7 @@ struct RecipeAddView: View {
     }
     
     func addStep(_ index: Int) {
-        steps.insert(StepInputModel(), at: index)
+        steps.insert(StepInputModel(), at: index + 1)
     }
     
     func removeStep(_ index: Int) {

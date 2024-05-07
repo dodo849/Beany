@@ -43,7 +43,7 @@ struct RecipeRowView: View {
                             .padding(.vertical, 4)
                             .background(.coffee.opacity(0.1))
                             .cornerRadius(5)
-                        Text("추출양 \(lastStep.accumulatedWater ?? 0)ml")
+                        Text("추출량 \(lastStep.accumulatedWater ?? 0)ml")
                             .padding(.horizontal, 7)
                             .padding(.vertical, 4)
                             .background(.blue.opacity(0.1))
