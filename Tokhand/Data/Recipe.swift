@@ -13,7 +13,7 @@ class Recipe: Equatable, Identifiable {
     @Attribute(.unique)
     let id: UUID = UUID()
     var name: String
-    @Relationship
+    @Relationship(deleteRule: .cascade)
     var steps: [Step]
     var author: Author
     let createdAt: Date = Date.now

@@ -34,6 +34,8 @@
 		BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */; };
 		BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */; };
 		BC84DBD32BE789DE00374D69 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BC84DBD22BE789DE00374D69 /* ComposableArchitecture */; };
+		BC8E1C922BEB5CD5008AC5C4 /* RecipeAddBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E1C912BEB5CD5008AC5C4 /* RecipeAddBuilder.swift */; };
+		BC8E1C942BEB5CE8008AC5C4 /* RecipeAddLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E1C932BEB5CE8008AC5C4 /* RecipeAddLink.swift */; };
 		BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D002BE9301700059E67 /* RecipeTitleView.swift */; };
 		BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */; };
 		BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CC2BEA938A0029A463 /* SettingView.swift */; };
@@ -68,6 +70,8 @@
 		BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
 		BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
+		BC8E1C912BEB5CD5008AC5C4 /* RecipeAddBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddBuilder.swift; sourceTree = "<group>"; };
+		BC8E1C932BEB5CE8008AC5C4 /* RecipeAddLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddLink.swift; sourceTree = "<group>"; };
 		BCD52D002BE9301700059E67 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
 		BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConstant.swift; sourceTree = "<group>"; };
 		BCE436CC2BEA938A0029A463 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */,
+				BC8E1C912BEB5CD5008AC5C4 /* RecipeAddBuilder.swift */,
+				BC8E1C932BEB5CE8008AC5C4 /* RecipeAddLink.swift */,
 			);
 			path = RecipeAdd;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */,
 				BC83D01C2BE8AE5700B2DB6F /* RecipeAddView.swift in Sources */,
 				BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */,
+				BC8E1C922BEB5CD5008AC5C4 /* RecipeAddBuilder.swift in Sources */,
 				BC83D0232BE8AE9600B2DB6F /* RecipeLink.swift in Sources */,
 				BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */,
 				BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */,
@@ -337,6 +344,7 @@
 				BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */,
 				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
 				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
+				BC8E1C942BEB5CE8008AC5C4 /* RecipeAddLink.swift in Sources */,
 				BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */,
 				BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */,
 				BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */,

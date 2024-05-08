@@ -12,7 +12,7 @@ import StackCoordinator
 
 struct RecipeView: View {
     
-    var coordinator: BaseCoordinator<RecipeLink>
+    var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     @Query(sort: \Recipe.createdAt)
     private var recipes: [Recipe]
@@ -21,7 +21,7 @@ struct RecipeView: View {
         ScrollView {
             VStack {
                 RecipeTitleView(plusAction: {
-                    coordinator.push(.recipeAddView)
+                    coordinator.push(.recipeAddView())
                 })
                 .padding([.top, .horizontal], PAGE_PADDING)
                 ForEach(recipes) { recipe in
@@ -35,7 +35,6 @@ struct RecipeView: View {
                 }
             }
         }
-//        .padding()
         .frame(maxWidth: .infinity)
         .foregroundColor(.strongCoffee)
         .background(.coffee.opacity(0.1))

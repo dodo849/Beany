@@ -6,26 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 import ComposableArchitecture
 import StackCoordinator
 
-
+@MainActor
 struct RecipeAddView: View {
-    // MARK: Model
-    struct StepInputModel: Equatable, Identifiable {
-        var id: UUID = UUID()
-        var name: String
-        var seconds: String
-        var water: String
-        var helpText: String
-        
-        init() {
-            self.name = ""
-            self.seconds = "1"
-            self.water = "1"
-            self.helpText = ""
-        }
+    struct RecipeInputModel: Equatable {
+        var id: UUID?
+        var name: String = ""
+        var steps: [StepInputModel] = [.init()]
+    }
+    
+    struct StepInputModel: Equatable {
+        var name: String = ""
+        var seconds: String = "1"
+        var water: String = "1"
+        var helpText: String = ""
     }
     
     // MARK: Dependencies
@@ -33,14 +31,7 @@ struct RecipeAddView: View {
     var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     // MARK: State
-    @State var recipeName: String
-    @State var steps: [StepInputModel]
-    
-    init(recipeName: String = "", steps: [StepInputModel] = [.init()]
-    ) {
-        self.recipeName = recipeName
-        self.steps = steps
-    }
+    @State var recipe: RecipeInputModel
     
     var body: some View {
         ScrollView{
@@ -55,7 +46,7 @@ struct RecipeAddView: View {
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         Spacer()
                     }
-                    TextField("레시피를 구분할 이름을 작성해주세요(선택)", text: $recipeName)
+                    TextField("레시피를 구분할 이름을 작성해주세요(선택)", text: $recipe.name)
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
                 
@@ -64,14 +55,14 @@ struct RecipeAddView: View {
                 Text("추출 단계")
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                 VStack {
-                    ForEach(steps.indices, id: \.self) { index in
+                    ForEach($recipe.steps.indices, id: \.self) { index in
                         VStack() {
                             HStack {
                                 Image(systemName: "list.bullet")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 14, height: 14)
-                                TextField("순서 혹은 단계 이름을 입력해주세요(선택)", text: $steps[index].name)
+                                TextField("순서 혹은 단계 이름을 입력해주세요(선택)", text: $recipe.steps[index].name)
                             }
                             Spacer()
                             HStack(alignment: .center) {
@@ -82,12 +73,12 @@ struct RecipeAddView: View {
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 14, height: 14)
                                         TextField("시간", text: Binding(
-                                            get: { self.steps[index].seconds },
+                                            get: { self.recipe.steps[index].seconds },
                                             set: { newValue in
                                                 if let value = Int(newValue), value < 1 {
-                                                    self.steps[index].seconds = "1"
+                                                    self.recipe.steps[index].seconds = "1"
                                                 } else {
-                                                    self.steps[index].seconds = newValue
+                                                    self.recipe.steps[index].seconds = newValue
                                                 }
                                             }
                                         ))
@@ -104,16 +95,16 @@ struct RecipeAddView: View {
                                     .frame(width: 16, height: 16)
                                     .frame(maxWidth: 15)
                                 TextField("물 양", text:  Binding(
-                                    get: { self.steps[index].water },
+                                    get: { self.recipe.steps[index].water },
                                     set: { newValue in
                                         if let value = Int(newValue), value < 1 {
-                                            self.steps[index].water = "1"
+                                            self.recipe.steps[index].water = "1"
                                         } else {
-                                            self.steps[index].water = newValue
+                                            self.recipe.steps[index].water = newValue
                                         }
                                     }
                                 ))
-                                    .keyboardType(.numberPad)
+                                .keyboardType(.numberPad)
                                 Text("ml")
                                     .font(.system(size: 16, weight: .medium, design: .rounded))
                             }
@@ -122,13 +113,16 @@ struct RecipeAddView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 15, height: 15)
-                                TextField("추출 시 참고할 도움말을 작성해주세요(선택)", text: $steps[index].helpText)
+                                TextField(
+                                    "추출 시 참고할 도움말을 작성해주세요(선택)",
+                                    text: $recipe.steps[index].helpText
+                                )
                             }
                             HStack {
                                 Button(action: { addStep(index) }) {
                                     Text("추가 하기")
                                         .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                        .animation(.none, value: steps)
+                                        .animation(.none, value: recipe.steps)
                                 }
                                 .padding(.vertical, 7)
                                 .padding(.horizontal, 15)
@@ -142,7 +136,7 @@ struct RecipeAddView: View {
                                     Button(action: { removeStep(index) }) {
                                         Text("삭제 하기")
                                             .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                            .animation(.none, value: steps)
+                                            .animation(.none, value: recipe.steps)
                                     }
                                     .padding(.vertical, 7)
                                     .padding(.horizontal, 15)
@@ -159,7 +153,6 @@ struct RecipeAddView: View {
                         .background(.coffee.opacity(0.1))
                         .cornerRadius(15)
                     }
-                    
                 }
             }
         }
@@ -183,31 +176,49 @@ struct RecipeAddView: View {
     }
     
     func addStep(_ index: Int) {
-        steps.insert(StepInputModel(), at: index + 1)
+        recipe.steps.insert(.init(), at: index + 1)
     }
     
     func removeStep(_ index: Int) {
-        steps.remove(at: index)
+        recipe.steps.remove(at: index)
     }
     
     func saveRecipe() {
         coordinator.path.removeLast()
-        let newRecipe = Recipe(
-            name: recipeName,
-            steps: steps.enumerated().map { (index, item) in
-                Step(
+        if let recipeId = recipe.id {
+            let fetchPredicate = FetchDescriptor<Recipe>(
+                predicate: Recipe.findByIdPredicate(recipeId)
+            )
+            guard let exsistRecipe = try? context.fetch(fetchPredicate).first
+            else { return }
+            
+            exsistRecipe.name = recipe.name
+            exsistRecipe.steps.forEach { context.delete($0) }
+            exsistRecipe.steps = recipe.steps.enumerated().map { index, step in
+                return Step(
                     order: index,
-                    name: item.name,
-                    helpText: item.helpText,
-                    seconds: Int(item.seconds) ?? 0,
-                    water: Int(item.water) ?? 0
+                    name: step.name,
+                    helpText: step.helpText,
+                    seconds: Int(step.seconds) ?? 1,
+                    water: Int(step.water) ?? 1
                 )
-            })
-        context.insert(newRecipe)
+            }
+            try? context.save()
+        } else {
+            let newRecipe = Recipe(
+                name: recipe.name,
+                steps: recipe.steps.enumerated().map { index, step in
+                    return Step(
+                        order: index,
+                        name: step.name,
+                        helpText: step.helpText,
+                        seconds: Int(step.seconds) ?? 1,
+                        water: Int(step.water) ?? 1
+                    )
+                    
+                })
+            context.insert(newRecipe)
+        }
     }
     
-}
-
-#Preview {
-    RecipeAddView()
 }

@@ -10,13 +10,14 @@ import SwiftUI
 import ComposableArchitecture
 import StackCoordinator
 
+@MainActor
 enum RecipeLink: LinkProtocol {
-    case recipeAddView
+    case recipeAddView(_ recipe: Recipe? = nil)
     
     func matchView() -> any View {
         switch self {
-        case .recipeAddView:
-            return RecipeAddView()
+        case .recipeAddView(let recipe):
+            return RecipeAddBuilder(recipe: recipe)
         }
     }
 }

@@ -71,9 +71,6 @@ struct TimerReducer {
                 )
                 guard let selectedRecipe = try? context.fetch(fetchPredicate).first
                 else { return Effect<Action>.none }
-                // BUG: 문제점 발견.. @Model 인스턴스를 직접 만들어서 접근하려고 하면 nested model 접근에 crash가 남. 즉, context에서 fetch한 그대로의 인스턴스를 사용해야함...ㄷㄷ
-                // 예상 1: 새로 생성한 Recipe는 context 객체가 아닌데 정렬해서 저장한 steps는 context 객체라서 오류가 났다.
-                // 예상 2. 그냥 직접 만들어서 생성하는 것 자체가 안된다. (초기화는 가능, 접근은 불가능))
                 
                 state.recipe = selectedRecipe
                 state.currentStep = selectedRecipe.steps

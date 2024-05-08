@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import StackCoordinator
+
 struct RecipeRowView: View {
     let recipe: Recipe
     
@@ -14,6 +16,8 @@ struct RecipeRowView: View {
     @AppStorage("selectedRecipeId") var selectedRecipeId: String = UserDefaults.standard.string(
         forKey: UserDefaultConstant.selectedRecipeId
     ) ?? ""
+    var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
+    
     @State var dragOffset: CGFloat = 0
     private let dragStopOffset: CGFloat = 75
     
@@ -65,7 +69,7 @@ struct RecipeRowView: View {
                         .padding(.leading, 20 + PAGE_PADDING)
                         .foregroundColor(.strongCoffee)
                         .onTapGesture {
-                            print("우히힛 편집이닷")
+                            coordinator.push(.recipeAddView(recipe))
                         }
                     Spacer()
                     Image(systemName: "minus.circle")
@@ -148,6 +152,9 @@ struct RecipeRowView: View {
                 )
                 .animation(.bouncy(duration: 0.5), value: dragOffset)
             }
+        }
+        .onAppear() {
+            dragOffset = 0
         }
     }
     
