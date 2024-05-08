@@ -19,7 +19,7 @@ struct RecipeRowView: View {
     var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     @State var dragOffset: CGFloat = 0
-    private let dragStopOffset: CGFloat = 75
+    private let dragStopOffset: CGFloat = 65
     
     var body: some View {
         let lastStep = recipe.steps
@@ -83,12 +83,14 @@ struct RecipeRowView: View {
                                 title: "삭제하시겠습니까?",
                                 message: "삭제후엔 되돌릴 수 없습니다",
                                 action: UIAlertAction(title: "예", style: .default) { _ in
-//                                    if selectedRecipeId == recipe.id.uuidString {
-//                                        UserDefaults.standard.setValue(
-//                                            FirstInstallAction.shared.defaultRecipeId,
-//                                            forKey: UserDefaultConstant.selectedRecipeId
-//                                        )
-//                                    }
+                                    Task {
+                                        if selectedRecipeId == recipe.id.uuidString {
+                                            UserDefaults.standard.setValue(
+                                                FirstInstallAction.shared.defaultRecipeId.uuidString,
+                                                forKey: UserDefaultConstant.selectedRecipeId
+                                            )
+                                        }
+                                    }
                                     context.delete(recipe)
                                 })
                         }
