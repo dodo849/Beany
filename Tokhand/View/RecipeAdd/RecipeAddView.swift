@@ -33,8 +33,14 @@ struct RecipeAddView: View {
     var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     // MARK: State
-    @State var recipeName = ""
-    @State var steps: [StepInputModel] = [StepInputModel()]
+    @State var recipeName: String
+    @State var steps: [StepInputModel]
+    
+    init(recipeName: String = "", steps: [StepInputModel] = [.init()]
+    ) {
+        self.recipeName = recipeName
+        self.steps = steps
+    }
     
     var body: some View {
         ScrollView{
@@ -203,7 +209,5 @@ struct RecipeAddView: View {
 }
 
 #Preview {
-    RecipeAddView(
-        coordinator: BaseCoordinator<RecipeLink>()
-    )
+    RecipeAddView()
 }

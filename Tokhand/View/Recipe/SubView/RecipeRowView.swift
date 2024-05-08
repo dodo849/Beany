@@ -99,7 +99,6 @@ struct RecipeRowView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 16, height: 16)
-                            .frame(maxWidth: 15)
                     }
                     ForEach(
                         Array(recipe.steps.sorted(by: {$0.order < $1.order}).enumerated()),
@@ -131,15 +130,19 @@ struct RecipeRowView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
-                            dragOffset = gesture.translation.width
+                            if recipe.author != .admin {
+                                dragOffset = gesture.translation.width
+                            }
                         }
                         .onEnded { gesture in
-                            if gesture.translation.width < -dragStopOffset {
-                                dragOffset = -dragStopOffset
-                            } else if gesture.translation.width > dragStopOffset {
-                                dragOffset = dragStopOffset
-                            } else {
-                                dragOffset = 0
+                            if recipe.author != .admin {
+                                if gesture.translation.width < -dragStopOffset {
+                                    dragOffset = -dragStopOffset
+                                } else if gesture.translation.width > dragStopOffset {
+                                    dragOffset = dragStopOffset
+                                } else {
+                                    dragOffset = 0
+                                }
                             }
                         }
                 )
