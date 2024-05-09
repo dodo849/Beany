@@ -45,13 +45,18 @@ struct TimerReducer {
     }
     
     enum Action {
+        // for view
         case onAppear
         case startTimer
         case pauseTimer
         case resetTimer
         case timerTicked
+        
+        // for reducer
+        case proceedToNextStep
+        case timerCompleted
     }
-    
+
     @Dependency(\.continuousClock) var clock
     private enum CancelID { case timer }
     private var context = sharedModelContainer.mainContext
@@ -79,6 +84,10 @@ struct TimerReducer {
                     .last(where: { $0.order == state.recipe.steps.count - 1 }) ?? Step()
                 state.totalSeconds = lastStep.accumulatedSeconds ?? 0
                 state.totalWater = lastStep.accumulatedWater ?? 0
+                print(lastStep.name)
+                print(lastStep.accumulatedSeconds)
+                print(state.totalSeconds)
+                print(state.recipe.steps.map { ", \($0.name), \($0.order), \($0.seconds), \($0.water), \($0.accumulatedSeconds)"})
                 return .none
                 
             case .startTimer:
@@ -106,26 +115,36 @@ struct TimerReducer {
             case .timerTicked:
                 state.secondsElapsed += 1
                 
-                // check the timer is completed
-                if state.secondsElapsed >= state.totalSeconds {
-                    state.timerState = .complete
-                    return .cancel(id: CancelID.timer)
+                let isAllStepCompleted = state.secondsElapsed >= state.totalSeconds
+                if isAllStepCompleted {
+                    return .send(.timerCompleted)
                 }
                 
-                // cheack the current step is completed
-                if let currentAccumulatedSeconds = state.currentStep.accumulatedSeconds,
-                   state.secondsElapsed > currentAccumulatedSeconds {
-                    let currentOrder = state.currentStep.order
-                    if currentOrder < state.recipe.steps.count - 1,
-                       let nextStep = state.recipe.steps.first(
-                        where: { $0.order == currentOrder + 1 }
-                       ) {
-                        state.currentStep = nextStep
-                    }
+                let isCurrentStepCompleted = state.secondsElapsed >= state.currentStep.accumulatedSeconds ?? 0
+                if isCurrentStepCompleted {
+                    return .send(.proceedToNextStep)
                 }
                 return .none
+                
+            case .proceedToNextStep:
+                AudioServicesPlaySystemSound(1107)
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                
+                let currentOrder = state.currentStep.order
+                if currentOrder < state.recipe.steps.count - 1,
+                   let nextStep = state.recipe.steps.first(
+                    where: { $0.order == currentOrder + 1 }
+                   ) {
+                    state.currentStep = nextStep
+                }
+                return .none
+                
+            case .timerCompleted:
+                AudioServicesPlaySystemSound(1000)
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                state.timerState = .complete
+                return .cancel(id: CancelID.timer)
             }
         }
     }
 }
-

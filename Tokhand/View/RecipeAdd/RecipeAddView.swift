@@ -194,15 +194,17 @@ struct RecipeAddView: View {
             
             exsistRecipe.name = recipe.name
             exsistRecipe.steps.forEach { context.delete($0) }
-            exsistRecipe.steps = recipe.steps.enumerated().map { index, step in
-                return Step(
-                    order: index,
-                    name: step.name,
-                    helpText: step.helpText,
-                    seconds: Int(step.seconds) ?? 1,
-                    water: Int(step.water) ?? 1
-                )
-            }
+            exsistRecipe.setSteps(recipe.steps.enumerated()
+                .map { index, step in
+                    return Step(
+                        order: index,
+                        name: step.name,
+                        helpText: step.helpText,
+                        seconds: Int(step.seconds) ?? 1,
+                        water: Int(step.water) ?? 1
+                    )
+                }
+            )
             try? context.save()
         } else {
             let newRecipe = Recipe(
@@ -215,8 +217,8 @@ struct RecipeAddView: View {
                         seconds: Int(step.seconds) ?? 1,
                         water: Int(step.water) ?? 1
                     )
-                    
-                })
+                }
+            )
             context.insert(newRecipe)
         }
     }
