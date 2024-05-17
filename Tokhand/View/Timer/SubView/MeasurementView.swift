@@ -20,9 +20,9 @@ struct MeasurementView: View {
                         Spacer()
                         if index % 20 == 0 && index != 0 {
                             Text("\(index)ml")
-                                .offset(x: 0, y: 5)
-                                .font(.system(size: 10))
-                                .foregroundColor(.strongCoffee.opacity(0.5))
+                                .offset(x: 0, y: 6)
+                                .font(.system(size: 12))
+                                .foregroundColor(.strongCoffee.opacity(0.7))
                         }
                         Rectangle()
                             .fill(.strongCoffee.opacity(0.5))
