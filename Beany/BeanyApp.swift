@@ -30,7 +30,7 @@ var sharedModelContainer: ModelContainer = {
 }()
 
 @main
-struct TokhandApp: App {
+struct BeanyApp: App {
     var body: some Scene {
         WindowGroup {
             RootBuilder { path in

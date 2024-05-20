@@ -50,5 +50,10 @@ final class FirstInstallAction {
             }
             
         }
+        
+        UserDefaults.standard.setValue(
+            true,
+            forKey: UserDefaultConstant.isSoundOn
+        )
     }
 }

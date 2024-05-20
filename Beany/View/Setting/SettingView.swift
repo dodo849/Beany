@@ -38,13 +38,6 @@ struct SettingView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
             }
-            //            Text("Sponsored by Sven")
-            //                .padding(.horizontal, 10)
-            //                .padding(.vertical, 5)
-            //                .background(.gray.opacity(0.3))
-            //                .cornerRadius(5)
-            //                .font(.system(size: 12))
-            //                .foregroundColor(.black.opacity(0.7))
         }
         .padding(.horizontal, PAGE_PADDING)
         .customBackButton {

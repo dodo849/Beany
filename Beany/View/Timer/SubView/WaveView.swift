@@ -25,7 +25,7 @@ struct WaveView: View {
                 )
                 .offset(
                     x: UIScreen.main.bounds.size.width*4/2 - WAVE_CIRCLE_SIZE / 4 * 2,
-                    y: UIScreen.main.bounds.size.width - 50
+                    y: UIScreen.main.bounds.size.height / 2 - WAVE_CIRCLE_SIZE / 16
                 )
                 .animation(.linear(duration: 1), value: waveOffset)
             
@@ -40,7 +40,7 @@ struct WaveView: View {
                 )
                 .offset(
                     x: UIScreen.main.bounds.size.width*4/2 - WAVE_CIRCLE_SIZE / 4 * 2,
-                    y: UIScreen.main.bounds.size.width - 50
+                    y: UIScreen.main.bounds.size.height / 2 - WAVE_CIRCLE_SIZE / 16
                 )
                 .animation(.linear(duration: 1), value: waveOffset)
             
@@ -55,7 +55,7 @@ struct WaveView: View {
                 )
                 .offset(
                     x: UIScreen.main.bounds.size.width*4/2 - WAVE_CIRCLE_SIZE / 4 * 2,
-                    y: UIScreen.main.bounds.size.width - 50
+                    y: UIScreen.main.bounds.size.height / 2 - WAVE_CIRCLE_SIZE / 16
                 )
                 .animation(.linear(duration: 1), value: waveOffset)
             Rectangle()

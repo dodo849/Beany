@@ -13,30 +13,31 @@
 		BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */; };
 		BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */; };
 		BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */; };
-		BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84752BE7720D00C103E9 /* TokhandApp.swift */; };
 		BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84772BE7720D00C103E9 /* ContentView.swift */; };
 		BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84792BE7720D00C103E9 /* Item.swift */; };
 		BC6D847C2BE7720F00C103E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D847B2BE7720F00C103E9 /* Assets.xcassets */; };
 		BC6D847F2BE7720F00C103E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D847E2BE7720F00C103E9 /* Preview Assets.xcassets */; };
 		BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84A12BE7732600C103E9 /* TimerView.swift */; };
 		BC6D84A62BE776B100C103E9 /* TimerReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84A52BE776B100C103E9 /* TimerReducer.swift */; };
+		BC7F6B7C2BFB710E001919DC /* TestWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7F6B7B2BFB710E001919DC /* TestWave.swift */; };
+		BC7F6B7E2BFB8BC5001919DC /* BeanyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7F6B7D2BFB8BC5001919DC /* BeanyApp.swift */; };
 		BC83D0092BE7FF3500B2DB6F /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0082BE7FF3500B2DB6F /* SoundHelper.swift */; };
 		BC83D00C2BE8894D00B2DB6F /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D00B2BE8894D00B2DB6F /* WaveView.swift */; };
-		BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D00F2BE88CBC00B2DB6F /* RecipeView.swift */; };
 		BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0122BE88FC800B2DB6F /* Recipe.swift */; };
 		BC83D0162BE893CD00B2DB6F /* StackCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = BC83D0152BE893CD00B2DB6F /* StackCoordinator */; };
 		BC83D0182BE8941200B2DB6F /* TimerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0172BE8941200B2DB6F /* TimerBuilder.swift */; };
 		BC83D01A2BE8942600B2DB6F /* TimerLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0192BE8942600B2DB6F /* TimerLink.swift */; };
 		BC83D01C2BE8AE5700B2DB6F /* RecipeAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */; };
-		BC83D0232BE8AE9600B2DB6F /* RecipeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0222BE8AE9600B2DB6F /* RecipeLink.swift */; };
-		BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */; };
-		BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */; };
 		BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */; };
 		BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */; };
 		BC84DBD32BE789DE00374D69 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BC84DBD22BE789DE00374D69 /* ComposableArchitecture */; };
 		BC8E1C922BEB5CD5008AC5C4 /* RecipeAddBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E1C912BEB5CD5008AC5C4 /* RecipeAddBuilder.swift */; };
 		BC8E1C942BEB5CE8008AC5C4 /* RecipeAddLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E1C932BEB5CE8008AC5C4 /* RecipeAddLink.swift */; };
-		BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D002BE9301700059E67 /* RecipeTitleView.swift */; };
+		BCD216992BFBA9D200D4EB44 /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216922BFBA9D200D4EB44 /* RecipeRowView.swift */; };
+		BCD2169A2BFBA9D200D4EB44 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216932BFBA9D200D4EB44 /* RecipeTitleView.swift */; };
+		BCD2169B2BFBA9D200D4EB44 /* RecipeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216952BFBA9D200D4EB44 /* RecipeBuilder.swift */; };
+		BCD2169C2BFBA9D200D4EB44 /* RecipeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216962BFBA9D200D4EB44 /* RecipeLink.swift */; };
+		BCD2169D2BFBA9D200D4EB44 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216972BFBA9D200D4EB44 /* RecipeView.swift */; };
 		BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */; };
 		BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CC2BEA938A0029A463 /* SettingView.swift */; };
 		BCE436CF2BEA9C340029A463 /* CommonConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CE2BEA9C340029A463 /* CommonConstant.swift */; };
@@ -50,29 +51,30 @@
 		BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatHelper.swift; sourceTree = "<group>"; };
 		BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorView.swift; sourceTree = "<group>"; };
 		BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
-		BC6D84722BE7720D00C103E9 /* Tokhand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokhand.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC6D84752BE7720D00C103E9 /* TokhandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokhandApp.swift; sourceTree = "<group>"; };
+		BC6D84722BE7720D00C103E9 /* Beany.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beany.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6D84772BE7720D00C103E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC6D84792BE7720D00C103E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BC6D847B2BE7720F00C103E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC6D847E2BE7720F00C103E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC6D84A12BE7732600C103E9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		BC6D84A52BE776B100C103E9 /* TimerReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerReducer.swift; sourceTree = "<group>"; };
+		BC7F6B7B2BFB710E001919DC /* TestWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWave.swift; sourceTree = "<group>"; };
+		BC7F6B7D2BFB8BC5001919DC /* BeanyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeanyApp.swift; path = Beany/BeanyApp.swift; sourceTree = SOURCE_ROOT; };
 		BC83D0082BE7FF3500B2DB6F /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		BC83D00B2BE8894D00B2DB6F /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
-		BC83D00F2BE88CBC00B2DB6F /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		BC83D0122BE88FC800B2DB6F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		BC83D0172BE8941200B2DB6F /* TimerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBuilder.swift; sourceTree = "<group>"; };
 		BC83D0192BE8942600B2DB6F /* TimerLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLink.swift; sourceTree = "<group>"; };
 		BC83D01B2BE8AE5700B2DB6F /* RecipeAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddView.swift; sourceTree = "<group>"; };
-		BC83D0222BE8AE9600B2DB6F /* RecipeLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLink.swift; sourceTree = "<group>"; };
-		BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBuilder.swift; sourceTree = "<group>"; };
-		BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
 		BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		BC8E1C912BEB5CD5008AC5C4 /* RecipeAddBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddBuilder.swift; sourceTree = "<group>"; };
 		BC8E1C932BEB5CE8008AC5C4 /* RecipeAddLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddLink.swift; sourceTree = "<group>"; };
-		BCD52D002BE9301700059E67 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
+		BCD216922BFBA9D200D4EB44 /* RecipeRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
+		BCD216932BFBA9D200D4EB44 /* RecipeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
+		BCD216952BFBA9D200D4EB44 /* RecipeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeBuilder.swift; sourceTree = "<group>"; };
+		BCD216962BFBA9D200D4EB44 /* RecipeLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeLink.swift; sourceTree = "<group>"; };
+		BCD216972BFBA9D200D4EB44 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConstant.swift; sourceTree = "<group>"; };
 		BCE436CC2BEA938A0029A463 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BCE436CE2BEA9C340029A463 /* CommonConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstant.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 		BC6D84692BE7720D00C103E9 = {
 			isa = PBXGroup;
 			children = (
-				BC6D84742BE7720D00C103E9 /* Tokhand */,
+				BC6D84742BE7720D00C103E9 /* Beany */,
 				BC6D84732BE7720D00C103E9 /* Products */,
 				BC84DBCF2BE789B000374D69 /* Frameworks */,
 			);
@@ -104,24 +106,24 @@
 		BC6D84732BE7720D00C103E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC6D84722BE7720D00C103E9 /* Tokhand.app */,
+				BC6D84722BE7720D00C103E9 /* Beany.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC6D84742BE7720D00C103E9 /* Tokhand */ = {
+		BC6D84742BE7720D00C103E9 /* Beany */ = {
 			isa = PBXGroup;
 			children = (
 				BC83D0112BE88FBF00B2DB6F /* Data */,
 				BC83D00D2BE88C9F00B2DB6F /* View */,
 				BC83D0072BE7FF2900B2DB6F /* Helper */,
-				BC6D84752BE7720D00C103E9 /* TokhandApp.swift */,
+				BC7F6B7D2BFB8BC5001919DC /* BeanyApp.swift */,
 				BC6D84772BE7720D00C103E9 /* ContentView.swift */,
 				BC6D84792BE7720D00C103E9 /* Item.swift */,
 				BC6D847B2BE7720F00C103E9 /* Assets.xcassets */,
 				BC6D847D2BE7720F00C103E9 /* Preview Content */,
 			);
-			path = Tokhand;
+			path = Beany;
 			sourceTree = "<group>";
 		};
 		BC6D847D2BE7720F00C103E9 /* Preview Content */ = {
@@ -142,6 +144,14 @@
 				BC83D0192BE8942600B2DB6F /* TimerLink.swift */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		BC7F6B7A2BFB70FF001919DC /* TestWave */ = {
+			isa = PBXGroup;
+			children = (
+				BC7F6B7B2BFB710E001919DC /* TestWave.swift */,
+			);
+			path = TestWave;
 			sourceTree = "<group>";
 		};
 		BC83D0072BE7FF2900B2DB6F /* Helper */ = {
@@ -166,24 +176,14 @@
 		BC83D00D2BE88C9F00B2DB6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC7F6B7A2BFB70FF001919DC /* TestWave */,
 				BC83D0292BE8C5A500B2DB6F /* Common */,
 				BCE436CA2BEA935F0029A463 /* Setting */,
+				BCD216982BFBA9D200D4EB44 /* Recipe */,
 				BC83D01D2BE8AE5C00B2DB6F /* RecipeAdd */,
-				BC83D00E2BE88CAE00B2DB6F /* Recipe */,
 				BC6D84A42BE7769D00C103E9 /* Timer */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		BC83D00E2BE88CAE00B2DB6F /* Recipe */ = {
-			isa = PBXGroup;
-			children = (
-				BC83D0262BE8B06F00B2DB6F /* SubView */,
-				BC83D00F2BE88CBC00B2DB6F /* RecipeView.swift */,
-				BC83D0222BE8AE9600B2DB6F /* RecipeLink.swift */,
-				BC83D0242BE8AE9F00B2DB6F /* RecipeBuilder.swift */,
-			);
-			path = Recipe;
 			sourceTree = "<group>";
 		};
 		BC83D0112BE88FBF00B2DB6F /* Data */ = {
@@ -208,15 +208,6 @@
 			path = RecipeAdd;
 			sourceTree = "<group>";
 		};
-		BC83D0262BE8B06F00B2DB6F /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-				BC83D0272BE8B07B00B2DB6F /* RecipeRowView.swift */,
-				BCD52D002BE9301700059E67 /* RecipeTitleView.swift */,
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
 		BC83D0292BE8C5A500B2DB6F /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +226,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BCD216942BFBA9D200D4EB44 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				BCD216922BFBA9D200D4EB44 /* RecipeRowView.swift */,
+				BCD216932BFBA9D200D4EB44 /* RecipeTitleView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		BCD216982BFBA9D200D4EB44 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				BCD216942BFBA9D200D4EB44 /* SubView */,
+				BCD216952BFBA9D200D4EB44 /* RecipeBuilder.swift */,
+				BCD216962BFBA9D200D4EB44 /* RecipeLink.swift */,
+				BCD216972BFBA9D200D4EB44 /* RecipeView.swift */,
+			);
+			name = Recipe;
+			path = Beany/View/Recipe;
+			sourceTree = SOURCE_ROOT;
+		};
 		BCE436CA2BEA935F0029A463 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,9 +258,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC6D84712BE7720D00C103E9 /* Tokhand */ = {
+		BC6D84712BE7720D00C103E9 /* Beany */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC6D84982BE7720F00C103E9 /* Build configuration list for PBXNativeTarget "Tokhand" */;
+			buildConfigurationList = BC6D84982BE7720F00C103E9 /* Build configuration list for PBXNativeTarget "Beany" */;
 			buildPhases = (
 				BC6D846E2BE7720D00C103E9 /* Sources */,
 				BC6D846F2BE7720D00C103E9 /* Frameworks */,
@@ -258,13 +270,13 @@
 			);
 			dependencies = (
 			);
-			name = Tokhand;
+			name = Beany;
 			packageProductDependencies = (
 				BC84DBD22BE789DE00374D69 /* ComposableArchitecture */,
 				BC83D0152BE893CD00B2DB6F /* StackCoordinator */,
 			);
 			productName = Tokhand;
-			productReference = BC6D84722BE7720D00C103E9 /* Tokhand.app */;
+			productReference = BC6D84722BE7720D00C103E9 /* Beany.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +294,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC6D846D2BE7720D00C103E9 /* Build configuration list for PBXProject "Tokhand" */;
+			buildConfigurationList = BC6D846D2BE7720D00C103E9 /* Build configuration list for PBXProject "Beany" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -299,7 +311,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC6D84712BE7720D00C103E9 /* Tokhand */,
+				BC6D84712BE7720D00C103E9 /* Beany */,
 			);
 		};
 /* End PBXProject section */
@@ -321,36 +333,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC83D0282BE8B07B00B2DB6F /* RecipeRowView.swift in Sources */,
+				BC7F6B7C2BFB710E001919DC /* TestWave.swift in Sources */,
 				BC6D84A62BE776B100C103E9 /* TimerReducer.swift in Sources */,
 				BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */,
 				BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */,
+				BCD2169B2BFBA9D200D4EB44 /* RecipeBuilder.swift in Sources */,
 				BCE436D12BEA9DED0029A463 /* AlertHelper.swift in Sources */,
 				BC83D0092BE7FF3500B2DB6F /* SoundHelper.swift in Sources */,
-				BCD52D012BE9301700059E67 /* RecipeTitleView.swift in Sources */,
 				BC83D00C2BE8894D00B2DB6F /* WaveView.swift in Sources */,
 				BC83D0182BE8941200B2DB6F /* TimerBuilder.swift in Sources */,
+				BC7F6B7E2BFB8BC5001919DC /* BeanyApp.swift in Sources */,
 				BCE436CF2BEA9C340029A463 /* CommonConstant.swift in Sources */,
 				BC83D01A2BE8942600B2DB6F /* TimerLink.swift in Sources */,
 				BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */,
+				BCD2169C2BFBA9D200D4EB44 /* RecipeLink.swift in Sources */,
 				BC83D01C2BE8AE5700B2DB6F /* RecipeAddView.swift in Sources */,
+				BCD2169A2BFBA9D200D4EB44 /* RecipeTitleView.swift in Sources */,
 				BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */,
 				BC8E1C922BEB5CD5008AC5C4 /* RecipeAddBuilder.swift in Sources */,
-				BC83D0232BE8AE9600B2DB6F /* RecipeLink.swift in Sources */,
 				BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */,
 				BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */,
 				BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */,
+				BCD216992BFBA9D200D4EB44 /* RecipeRowView.swift in Sources */,
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
-				BC83D0102BE88CBC00B2DB6F /* RecipeView.swift in Sources */,
 				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
-				BC6D84762BE7720D00C103E9 /* TokhandApp.swift in Sources */,
 				BC8E1C942BEB5CE8008AC5C4 /* RecipeAddLink.swift in Sources */,
 				BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */,
 				BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */,
 				BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */,
 				BC1D21562BE94AB600D0DD1B /* Step.swift in Sources */,
+				BCD2169D2BFBA9D200D4EB44 /* RecipeView.swift in Sources */,
 				BC83D02F2BE8F87000B2DB6F /* Keyboard+Extension.swift in Sources */,
-				BC83D0252BE8AE9F00B2DB6F /* RecipeBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,26 +495,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Tokhand/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"Beany/Preview Content\"";
 				DEVELOPMENT_TEAM = N8MX74Y447;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Beti;
+				INFOPLIST_KEY_CFBundleDisplayName = beany;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = doyeon.Tokhand.com;
+				PRODUCT_BUNDLE_IDENTIFIER = doyeon.beany.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -519,26 +533,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Tokhand/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"Beany/Preview Content\"";
 				DEVELOPMENT_TEAM = N8MX74Y447;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Beti;
+				INFOPLIST_KEY_CFBundleDisplayName = beany;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = doyeon.Tokhand.com;
+				PRODUCT_BUNDLE_IDENTIFIER = doyeon.beany.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -553,7 +568,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC6D846D2BE7720D00C103E9 /* Build configuration list for PBXProject "Tokhand" */ = {
+		BC6D846D2BE7720D00C103E9 /* Build configuration list for PBXProject "Beany" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6D84962BE7720F00C103E9 /* Debug */,
@@ -562,7 +577,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC6D84982BE7720F00C103E9 /* Build configuration list for PBXNativeTarget "Tokhand" */ = {
+		BC6D84982BE7720F00C103E9 /* Build configuration list for PBXNativeTarget "Beany" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6D84992BE7720F00C103E9 /* Debug */,
