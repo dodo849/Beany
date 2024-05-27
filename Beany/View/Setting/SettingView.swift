@@ -43,7 +43,7 @@ struct SettingView: View {
         .customBackButton {
             coordinator.path.removeLast()
         }
-        .onAppear() {
+        .onAppear {
             isSoundOn = UserDefaults.standard.bool(
                 forKey: UserDefaultConstant.isSoundOn
             )

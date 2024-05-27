@@ -96,7 +96,7 @@ struct RecipeRowView: View {
                         }
                 }
                 HStack(spacing: 10) {
-                    VStack() {
+                    VStack {
                         Image(systemName: "clock.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -155,7 +155,7 @@ struct RecipeRowView: View {
                 .animation(.bouncy(duration: 0.5), value: dragOffset)
             }
         }
-        .onAppear() {
+        .onAppear {
             dragOffset = 0
         }
     }

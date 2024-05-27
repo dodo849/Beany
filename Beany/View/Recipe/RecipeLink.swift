@@ -10,7 +10,6 @@ import SwiftUI
 import ComposableArchitecture
 import StackCoordinator
 
-@MainActor
 enum RecipeLink: LinkProtocol {
     case recipeAddView(_ recipe: Recipe? = nil)
     

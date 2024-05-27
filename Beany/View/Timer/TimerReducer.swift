@@ -151,6 +151,10 @@ struct TimerReducer {
                 }
                 state.timerState = .complete
                 return .cancel(id: CancelID.timer)
+                
+                func checkSameRecipe() {
+                    
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ enum Author: Codable {
     case user
     
     var description: String {
-        switch (self) {
+        switch self {
         case .admin:
             return "기본"
         case .user:

@@ -12,31 +12,35 @@ import ComposableArchitecture
 import StackCoordinator
 
 struct TimerView: View {
-    let WAVE_CIRCLE_SIZE: CGFloat = 400
-    let TOP_BAR_HEIGHT = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
-    let TOP_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 85
-    let MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 48
-    let BOTTOM_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 10
+    private let WAVE_CIRCLE_SIZE: CGFloat = 400
+    private let TOP_BAR_HEIGHT = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    private let TOP_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 85
+    private let MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 48
+    private let BOTTOM_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 10
     
     var coordinator: BaseCoordinator<TimerLink>
     
     @Bindable var store: StoreOf<TimerReducer>
-    var currentWater: CGFloat {
+    private var currentWater: CGFloat {
         let currentWaterSpeed = CGFloat(store.currentStep.water) / CGFloat(store.currentStep.seconds)
-        let currentSecondElapsed = CGFloat(store.secondsElapsed + store.currentStep.seconds - (store.currentStep.accumulatedSeconds ?? 0))
-        let previousAccumulatedWater = CGFloat(store.currentStep.accumulatedWater ?? 0) - CGFloat( store.currentStep.water)
+        let currentSecondElapsed = CGFloat(store.secondsElapsed + store.currentStep.seconds
+                                           - (store.currentStep.accumulatedSeconds ?? 0))
+        let previousAccumulatedWater = CGFloat(store.currentStep.accumulatedWater ?? 0)
+        - CGFloat( store.currentStep.water)
         return currentWaterSpeed * (currentSecondElapsed) + previousAccumulatedWater
     }
-    var waterHeightOffset: CGFloat {
-        return UIScreen.main.bounds.size.height * 1.5 - UIScreen.main.bounds.size.height * (currentWater / CGFloat(store.totalWater))
+    private var waterHeightOffset: CGFloat {
+        return UIScreen.main.bounds.size.height
+        * 1.5
+        - UIScreen.main.bounds.size.height
+        * (currentWater / CGFloat(store.totalWater))
     }
-    var waterPercentage: CGFloat {
+    private var waterPercentage: CGFloat {
         return currentWater / CGFloat(store.totalWater) * 100.0
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            
+        GeometryReader { _ in
             Group {
                 WaveView(waveOffset: store.secondsElapsed)
                     .position(x: UIScreen.main.bounds.size.width/2, y: waterHeightOffset)
@@ -85,7 +89,10 @@ struct TimerView: View {
                         .foregroundStyle(
                             waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE ? .white : .strongCoffee
                         )
-                        .animation(.interactiveSpring(duration: 1), value: waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE)
+                        .animation(
+                            .interactiveSpring(duration: 1),
+                            value: waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE
+                        )
                         .animation(.none, value: store.secondsElapsed)
                     
                     Text("\(TimeFormatHelper.secondsToTimeString(store.currentStep.accumulatedSeconds ?? 0)) 까지")
@@ -97,7 +104,10 @@ struct TimerView: View {
                     Spacer()
                     
                     Text("총 \(store.currentStep.accumulatedWater ?? 0)ml 추출 중")
-                        .foregroundStyle(waterPercentage > BOTTOM_TEXT_COLOR_CHANGE_PERCENTAGE ? .white : .strongCoffee)
+                        .foregroundStyle(
+                            getContrastTextColorOnBackground(
+                                waterPercentage > BOTTOM_TEXT_COLOR_CHANGE_PERCENTAGE)
+                        )
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                     
                     Spacer()
@@ -114,7 +124,7 @@ struct TimerView: View {
                 ZStack {
                     VStack {
                         Spacer().frame(height: TOP_BAR_HEIGHT)
-                        HStack(spacing: 15){
+                        HStack(spacing: 15) {
                             Spacer()
                             Image(systemName: "cup.and.saucer")
                                 .resizable()
@@ -131,13 +141,17 @@ struct TimerView: View {
                                     coordinator.push(.settingView)
                                 }
                         }
-                        .foregroundColor(waterPercentage > TOP_TEXT_COLOR_CHANGE_PERCENTAGE ? .white : .strongCoffee)
+                        .foregroundColor(
+                            getContrastTextColorOnBackground(
+                                waterPercentage > TOP_TEXT_COLOR_CHANGE_PERCENTAGE
+                            )
+                        )
                         Spacer()
                     }
                     VStack {
                         Spacer()
                         let timerText = {
-                            switch (store.timerState) {
+                            switch store.timerState {
                             case .ready:
                                 return "탭하면 시작합니다"
                             case .paused:
@@ -152,9 +166,10 @@ struct TimerView: View {
                             .multilineTextAlignment(.center)
                             .lineSpacing(10)
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
-//                            .blendMode(.plusDarker)
                             .foregroundStyle(
-                                waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE ? .white : .strongCoffee
+                                getContrastTextColorOnBackground(
+                                    waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE
+                                )
                             )
                         if store.timerState != .ready {
                             Button(action: { store.send(.resetTimer) }) {
@@ -162,8 +177,16 @@ struct TimerView: View {
                             }
                             .padding(.vertical, 10)
                             .padding(.horizontal, 25)
-                            .foregroundColor(waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE ? .strongCoffee : .white)
-                            .background(waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE ? .white.opacity(0.6) : .strongCoffee.opacity(0.8))
+                            .foregroundColor(
+                                getContrastTextColorOnBackground(
+                                    !(waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE)
+                                )
+                            )
+                            .background(
+                                getContrastButtonColorOnBackground(
+                                    waterPercentage > MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE
+                                )
+                            )
                             .cornerRadius(100)
                         }
                         Spacer()
@@ -183,11 +206,27 @@ struct TimerView: View {
                 store.send(.startTimer)
             }
         }
-        .onAppear() {
+        .onAppear {
             store.send(.onAppear)
         }
-        .onDisappear() {
+        .onDisappear {
             store.send(.resetTimer)
+        }
+    }
+    
+    func getContrastTextColorOnBackground(_ condition: Bool) -> Color {
+        if condition {
+            return .white
+        } else {
+            return .strongCoffee
+        }
+    }
+    
+    func getContrastButtonColorOnBackground(_ condition: Bool) -> Color {
+        if condition {
+            return .white.opacity(0.6)
+        } else {
+            return .strongCoffee.opacity(0.8)
         }
     }
     

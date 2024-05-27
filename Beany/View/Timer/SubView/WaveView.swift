@@ -13,7 +13,7 @@ struct WaveView: View {
     var waveOffset: Int
     
     var body: some View {
-        ZStack(alignment: .center){
+        ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: WAVE_CIRCLE_SIZE / 2.3)
                 .fill(Color.coffee.opacity(0.5))
                 .frame(

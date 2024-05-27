@@ -15,7 +15,7 @@ var sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Recipe.self,
         Step.self,
-        Item.self,
+        Item.self
     ])
     let modelConfiguration = ModelConfiguration(
         schema: schema,
@@ -33,7 +33,7 @@ var sharedModelContainer: ModelContainer = {
 struct BeanyApp: App {
     var body: some Scene {
         WindowGroup {
-            RootBuilder { path in
+            RootBuilder { _ in
                 TimerBuilder()
             }
             //            ContentView()

@@ -26,8 +26,7 @@ struct TestWaveView: View {
     }
 }
 
-
-fileprivate struct WaveShape: Shape {
+private struct WaveShape: Shape {
     var amplitude: CGFloat
 
     var animatableData: CGFloat {

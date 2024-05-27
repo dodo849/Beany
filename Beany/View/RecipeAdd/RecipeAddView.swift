@@ -34,7 +34,7 @@ struct RecipeAddView: View {
     @State var recipe: RecipeInputModel
     
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack {
                 VStack {
                     HStack {
@@ -56,7 +56,7 @@ struct RecipeAddView: View {
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                 VStack {
                     ForEach($recipe.steps.indices, id: \.self) { index in
-                        VStack() {
+                        VStack {
                             HStack {
                                 Image(systemName: "list.bullet")
                                     .resizable()
@@ -94,7 +94,7 @@ struct RecipeAddView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 16, height: 16)
                                     .frame(maxWidth: 15)
-                                TextField("물 양", text:  Binding(
+                                TextField("물 양", text: Binding(
                                     get: { self.recipe.steps[index].water },
                                     set: { newValue in
                                         if let value = Int(newValue), value < 1 {
@@ -161,7 +161,7 @@ struct RecipeAddView: View {
         .foregroundColor(.strongCoffee)
         .scrollIndicators(.hidden)
         .addHideKeyboardGuesture()
-        .customBackButton() {
+        .customBackButton {
             coordinator.path.removeLast()
         }
         .toolbar {

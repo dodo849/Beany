@@ -41,4 +41,3 @@ struct RecipeAddBuilder: BuilderProtocol {
         }
     }
 }
-

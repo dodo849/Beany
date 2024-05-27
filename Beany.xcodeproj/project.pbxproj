@@ -11,9 +11,8 @@
 		BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */; };
 		BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21592BEA147400D0DD1B /* Author.swift */; };
 		BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */; };
-		BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */; };
 		BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */; };
-		BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84772BE7720D00C103E9 /* ContentView.swift */; };
+		BC53B0962C0465EB00549B3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BC53B0952C0465EB00549B3D /* .swiftlint.yml */; };
 		BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84792BE7720D00C103E9 /* Item.swift */; };
 		BC6D847C2BE7720F00C103E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D847B2BE7720F00C103E9 /* Assets.xcassets */; };
 		BC6D847F2BE7720F00C103E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D847E2BE7720F00C103E9 /* Preview Assets.xcassets */; };
@@ -49,10 +48,9 @@
 		BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInstallAction.swift; sourceTree = "<group>"; };
 		BC1D21592BEA147400D0DD1B /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatHelper.swift; sourceTree = "<group>"; };
-		BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorView.swift; sourceTree = "<group>"; };
 		BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
+		BC53B0952C0465EB00549B3D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BC6D84722BE7720D00C103E9 /* Beany.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beany.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC6D84772BE7720D00C103E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC6D84792BE7720D00C103E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BC6D847B2BE7720F00C103E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC6D847E2BE7720F00C103E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -97,6 +95,7 @@
 		BC6D84692BE7720D00C103E9 = {
 			isa = PBXGroup;
 			children = (
+				BC53B0952C0465EB00549B3D /* .swiftlint.yml */,
 				BC6D84742BE7720D00C103E9 /* Beany */,
 				BC6D84732BE7720D00C103E9 /* Products */,
 				BC84DBCF2BE789B000374D69 /* Frameworks */,
@@ -118,7 +117,6 @@
 				BC83D00D2BE88C9F00B2DB6F /* View */,
 				BC83D0072BE7FF2900B2DB6F /* Helper */,
 				BC7F6B7D2BFB8BC5001919DC /* BeanyApp.swift */,
-				BC6D84772BE7720D00C103E9 /* ContentView.swift */,
 				BC6D84792BE7720D00C103E9 /* Item.swift */,
 				BC6D847B2BE7720F00C103E9 /* Assets.xcassets */,
 				BC6D847D2BE7720F00C103E9 /* Preview Content */,
@@ -177,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7F6B7A2BFB70FF001919DC /* TestWave */,
-				BC83D0292BE8C5A500B2DB6F /* Common */,
+				BC83D0292BE8C5A500B2DB6F /* Util */,
 				BCE436CA2BEA935F0029A463 /* Setting */,
 				BCD216982BFBA9D200D4EB44 /* Recipe */,
 				BC83D01D2BE8AE5C00B2DB6F /* RecipeAdd */,
@@ -208,15 +206,14 @@
 			path = RecipeAdd;
 			sourceTree = "<group>";
 		};
-		BC83D0292BE8C5A500B2DB6F /* Common */ = {
+		BC83D0292BE8C5A500B2DB6F /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				BC83D02A2BE8C5B500B2DB6F /* BackButton+Extension.swift */,
 				BC83D02E2BE8F87000B2DB6F /* Keyboard+Extension.swift */,
-				BC2E5F152BEA316100B5FA4D /* AverageColorView.swift */,
 				BCE436CE2BEA9C340029A463 /* CommonConstant.swift */,
 			);
-			path = Common;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		BC84DBCF2BE789B000374D69 /* Frameworks */ = {
@@ -265,6 +262,7 @@
 				BC6D846E2BE7720D00C103E9 /* Sources */,
 				BC6D846F2BE7720D00C103E9 /* Frameworks */,
 				BC6D84702BE7720D00C103E9 /* Resources */,
+				BCCC32912C04540D007540CE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -321,12 +319,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC53B0962C0465EB00549B3D /* .swiftlint.yml in Resources */,
 				BC6D847F2BE7720F00C103E9 /* Preview Assets.xcassets in Resources */,
 				BC6D847C2BE7720F00C103E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BCCC32912C04540D007540CE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC6D846E2BE7720D00C103E9 /* Sources */ = {
@@ -345,7 +364,6 @@
 				BC7F6B7E2BFB8BC5001919DC /* BeanyApp.swift in Sources */,
 				BCE436CF2BEA9C340029A463 /* CommonConstant.swift in Sources */,
 				BC83D01A2BE8942600B2DB6F /* TimerLink.swift in Sources */,
-				BC6D84782BE7720D00C103E9 /* ContentView.swift in Sources */,
 				BCD2169C2BFBA9D200D4EB44 /* RecipeLink.swift in Sources */,
 				BC83D01C2BE8AE5700B2DB6F /* RecipeAddView.swift in Sources */,
 				BCD2169A2BFBA9D200D4EB44 /* RecipeTitleView.swift in Sources */,
@@ -353,7 +371,6 @@
 				BC8E1C922BEB5CD5008AC5C4 /* RecipeAddBuilder.swift in Sources */,
 				BC83D02B2BE8C5B500B2DB6F /* BackButton+Extension.swift in Sources */,
 				BC6D84A22BE7732600C103E9 /* TimerView.swift in Sources */,
-				BC2E5F162BEA316100B5FA4D /* AverageColorView.swift in Sources */,
 				BCD216992BFBA9D200D4EB44 /* RecipeRowView.swift in Sources */,
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
 				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
@@ -499,6 +516,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Beany/Preview Content\"";
 				DEVELOPMENT_TEAM = N8MX74Y447;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = beany;
@@ -537,6 +555,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Beany/Preview Content\"";
 				DEVELOPMENT_TEAM = N8MX74Y447;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = beany;
