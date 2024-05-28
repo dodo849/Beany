@@ -8,22 +8,49 @@
 import Foundation
 import AVFoundation
 
-class SoundHelper {
-    static let shared = SoundHelper()
-    
-    private init() {}
-    
-    var player: AVAudioPlayer?
+protocol SoundHelper {
+    func play()
+}
 
-    func playSound() {
-        
-        guard let url = Bundle.main.url(forResource: "sound", withExtension: "mp3") else { return }
-        
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
-        } catch {
-            print("사운드를 재생할 수 없습니다.")
+extension SoundHelper {
+    var isSoundOn: Bool {
+        return UserDefaultsRepository.get(
+            forKey: .isSoundOn
+        )
+    }
+}
+
+struct SoundHelperProxy: SoundHelper {
+    private let soundHelper: SoundHelper
+    
+    init(_ soundHelper: SoundHelper) {
+        self.soundHelper = soundHelper
+    }
+    
+    func play() {
+        if isSoundOn {
+            soundHelper.play()
         }
+    }
+}
+
+struct TimerToggleSoundHelper: SoundHelper {
+    func play() {
+        AudioServicesPlaySystemSound(1105)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+}
+
+struct NextStepSoundHelper: SoundHelper {
+    func play() {
+        AudioServicesPlaySystemSound(1107)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+}
+
+struct TimerCompleteSoundHelper: SoundHelper {
+    func play() {
+        AudioServicesPlaySystemSound(1106)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }

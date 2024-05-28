@@ -42,7 +42,6 @@ struct TimerReducer {
         var totalWater: Int = 1
         var recipe: Recipe = .init()
         var currentStep: Step = .init()
-        var isSoundOn: Bool = true
     }
     
     enum Action {
@@ -55,7 +54,6 @@ struct TimerReducer {
         
         // for reducer
         case changeRecipe(selectedId: UUID)
-        case setSoundSetting
         case proceedToNextStep
         case timerCompleted
     }
@@ -77,18 +75,14 @@ struct TimerReducer {
                 else { return Effect<Action>.none }
                 
                 if state.recipe.id != selectedRecipeId {
-                    return .concatenate(
-                        .send(.changeRecipe(selectedId: selectedRecipeId)),
-                        .send(.setSoundSetting)
-                    )
-                } else {
-                    return .send(.setSoundSetting)
+                    return .send(.changeRecipe(selectedId: selectedRecipeId))
                 }
                 
+                return .none
+                
             case .startTimer:
-                if state.isSoundOn {
-                    AudioServicesPlaySystemSound(1105)
-                }
+                SoundHelperProxy(TimerToggleSoundHelper()).play()
+                
                 state.timerState.toggle()
                 return .run { [isTimerActive = state.timerState == .active] send in
                     guard isTimerActive else { return }
@@ -139,17 +133,8 @@ struct TimerReducer {
                 state.totalWater = lastStep.accumulatedWater ?? 0
                 return .none
                 
-            case .setSoundSetting:
-                state.isSoundOn = UserDefaultsRepository.get(
-                    forKey: .isSoundOn
-                )
-                return .none
-                
             case .proceedToNextStep:
-                if state.isSoundOn {
-                    AudioServicesPlaySystemSound(1107)
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                }
+                SoundHelperProxy(NextStepSoundHelper()).play()
                 
                 let currentOrder = state.currentStep.order
                 if currentOrder < state.recipe.steps.count - 1,
@@ -161,10 +146,8 @@ struct TimerReducer {
                 return .none
                 
             case .timerCompleted:
-                if state.isSoundOn {
-                    AudioServicesPlaySystemSound(1000)
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                }
+                SoundHelperProxy(TimerCompleteSoundHelper()).play()
+                
                 state.timerState = .complete
                 return .cancel(id: CancelID.timer)
             }

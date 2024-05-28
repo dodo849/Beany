@@ -71,5 +71,5 @@ var sampleSteps: [Step] = [
     .init(order: 2, name: "첫번째 추출", helpText: "가운데부터 균일한 속도로 물을 부어주세요", seconds: 60, water: 80),
     .init(order: 3, name: "두번째 추출", helpText: "속도를 조금 높여 물을 부어주세요", seconds: 40, water: 40)
     //    .init(order: 4, name: "세번째 추출", helpText: "시간이 되면 드리퍼 내에 물이 남아있어도 추출을 마무리해주세요", 
-    //seconds: 30, accumulatedSeconds: 110, water: 40, accumulatedWater: 160),
+    //seconds: 30, accumulatedSeconds: 110, water: 40, accumulatedWater: 160)
 ]
