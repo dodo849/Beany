@@ -66,9 +66,10 @@ struct TimerReducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                guard let selectedRecipeIdString = UserDefaults.standard.string(
-                    forKey: UserDefaultConstant.selectedRecipeId
-                )else { return Effect<Action>.none }
+                guard let selectedRecipeIdString: String =  UserDefaultsRepository.get(
+                    forKey: .selectedRecipeId
+                )
+                else { return Effect<Action>.none }
                 guard let selectedRecipeId = UUID(uuidString: selectedRecipeIdString)
                 else { return Effect<Action>.none }
                 
@@ -86,8 +87,8 @@ struct TimerReducer {
                 state.totalSeconds = lastStep.accumulatedSeconds ?? 0
                 state.totalWater = lastStep.accumulatedWater ?? 0
                 
-                state.isSoundOn = UserDefaults.standard.bool(
-                    forKey: UserDefaultConstant.isSoundOn
+                state.isSoundOn = UserDefaultsRepository.get(
+                    forKey: .isSoundOn
                 )
                 return .none
                 

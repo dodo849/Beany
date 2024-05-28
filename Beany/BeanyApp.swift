@@ -38,7 +38,7 @@ struct BeanyApp: App {
             }
             //            ContentView()
             .onAppear {
-                FirstInstallAction.shared.excute()
+                FirstInstallAction.shared.execute()
             }
         }
         .modelContainer(sharedModelContainer)

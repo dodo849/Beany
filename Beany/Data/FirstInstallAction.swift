@@ -29,30 +29,35 @@ final class FirstInstallAction {
     )
     let defaultRecipeId: UUID
     
-    func excute() {
-        let key = UserDefaultConstant.isFirstInstall
-        let hasBeenInstalledBefore = UserDefaults.standard.bool(
-            forKey: key
+    func execute() {
+        let hasBeenInstalledBefore: Bool = UserDefaultsRepository.get(
+            forKey: .isFirstInstall
         )
-        
+
         if !hasBeenInstalledBefore {
-            context.insert(defaultRecipe)
-            UserDefaults.standard.set(true, forKey: key)
-            UserDefaults.standard.set(
-                defaultRecipe.id.uuidString,
-                forKey: UserDefaultConstant.selectedRecipeId
-            )
-            do {
-                try context.save()
-            } catch {
-                fatalError("model context save failed")
-            }
-            
+            setDefaultRecipe()
+            setDefaultSoundSetting()
         }
-        
-        UserDefaults.standard.setValue(
+    }
+    
+    private func setDefaultRecipe() {
+        context.insert(defaultRecipe)
+        UserDefaultsRepository.save(true, forKey: .isFirstInstall)
+        UserDefaultsRepository.save(
+            defaultRecipe.id.uuidString,
+            forKey: .selectedRecipeId
+        )
+        do {
+            try context.save()
+        } catch {
+            fatalError("model context save failed")
+        }
+    }
+    
+    private func setDefaultSoundSetting() {
+        UserDefaultsRepository.save(
             true,
-            forKey: UserDefaultConstant.isSoundOn
+            forKey: .isSoundOn
         )
     }
 }

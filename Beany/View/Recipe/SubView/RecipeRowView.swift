@@ -13,9 +13,9 @@ struct RecipeRowView: View {
     let recipe: Recipe
     
     @Environment(\.modelContext) var context
-    @AppStorage("selectedRecipeId") var selectedRecipeId: String = UserDefaults.standard.string(
-        forKey: UserDefaultConstant.selectedRecipeId
-    ) ?? ""
+    @AppStorage("selectedRecipeId") 
+    var selectedRecipeId: String = UserDefaultsRepository.get(forKey: .selectedRecipeId)
+
     var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     
     @State var dragOffset: CGFloat = 0
@@ -83,13 +83,8 @@ struct RecipeRowView: View {
                                 title: "삭제하시겠습니까?",
                                 message: "삭제후엔 되돌릴 수 없습니다",
                                 action: UIAlertAction(title: "예", style: .default) { _ in
-                                    Task {
-                                        if selectedRecipeId == recipe.id.uuidString {
-                                            UserDefaults.standard.setValue(
-                                                FirstInstallAction.shared.defaultRecipeId.uuidString,
-                                                forKey: UserDefaultConstant.selectedRecipeId
-                                            )
-                                        }
+                                    if isSelectedRecipe() {
+                                        setSelectedRecipeByDefault()
                                     }
                                     context.delete(recipe)
                                 })
@@ -162,6 +157,13 @@ struct RecipeRowView: View {
     
     func isSelectedRecipe() -> Bool {
         return selectedRecipeId == recipe.id.uuidString
+    }
+    
+    @MainActor func setSelectedRecipeByDefault() {
+        UserDefaultsRepository.save(
+            FirstInstallAction.shared.defaultRecipeId.uuidString,
+            forKey: .selectedRecipeId
+        )
     }
 }
 

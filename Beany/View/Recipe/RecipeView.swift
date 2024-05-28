@@ -27,9 +27,9 @@ struct RecipeView: View {
                 ForEach(recipes) { recipe in
                     RecipeRowView(recipe: recipe)
                         .onTapGesture {
-                            UserDefaults.standard.setValue(
+                            UserDefaultsRepository.save(
                                 recipe.id.uuidString,
-                                forKey: UserDefaultConstant.selectedRecipeId
+                                forKey: .selectedRecipeId
                             )
                         }
                 }

@@ -18,7 +18,7 @@ enum TimerLink: LinkProtocol {
         case .recipeView:
             return RecipeBuilder()
         case .settingView:
-            return SettingView()
+            return SettingBuilder()
         }
     }
 }

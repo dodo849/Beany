@@ -12,3 +12,24 @@ final class UserDefaultConstant {
     static let isFirstInstall = "isFirstInstall"
     static let isSoundOn = "isSoundOn"
 }
+
+enum UserDefaultsKey: String {
+    case selectedRecipeId
+    case isFirstInstall
+    case isSoundOn
+}
+
+struct UserDefaultsRepository {
+    
+    static func save<T>(_ value: T, forKey key: UserDefaultsKey) {
+        UserDefaults.standard.setValue(value, forKey: key.rawValue)
+    }
+    
+    static func get<T>(forKey key: UserDefaultsKey) -> T {
+        if let value = UserDefaults.standard.value(forKey: key.rawValue) as? T {
+            return value
+        } else {
+            fatalError("key not found")
+        }
+    }
+}

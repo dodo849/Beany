@@ -11,7 +11,7 @@ import StackCoordinator
 
 struct SettingView: View {
     
-    var coordinator = BaseCoordinator<TimerLink>()
+    var coordinator = BaseCoordinator<SettingLink>()
     
     @State private var isSoundOn = true
     
@@ -24,12 +24,32 @@ struct SettingView: View {
                     of: isSoundOn,
                     initial: true
                 ) {
-                    UserDefaults.standard.setValue(
-                        isSoundOn,
-                        forKey: UserDefaultConstant.isSoundOn
-                    )
+                    UserDefaultsRepository.save(isSoundOn, forKey: .isSoundOn)
                 }
             Spacer()
+            Button(action: { 
+                coordinator.sheet = .contactUsSheet
+            }) {
+                Text("문의하기")
+            }
+        }
+        .padding(.horizontal, PAGE_PADDING)
+        .customBackButton {
+            coordinator.path.removeLast()
+        }
+        .onAppear {
+            isSoundOn = UserDefaultsRepository.get(forKey: .isSoundOn)
+        }
+    }
+}
+
+#Preview {
+    SettingView()
+}
+
+struct ContactUsSheet: View {
+    var body: some View {
+        VStack {
             HStack {
                 Text("문의")
                     .font(.system(size: 14))
@@ -39,18 +59,5 @@ struct SettingView: View {
                     .foregroundColor(.gray)
             }
         }
-        .padding(.horizontal, PAGE_PADDING)
-        .customBackButton {
-            coordinator.path.removeLast()
-        }
-        .onAppear {
-            isSoundOn = UserDefaults.standard.bool(
-                forKey: UserDefaultConstant.isSoundOn
-            )
-        }
     }
-}
-
-#Preview {
-    SettingView()
 }
