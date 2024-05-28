@@ -54,6 +54,8 @@ struct TimerReducer {
         case timerTicked
         
         // for reducer
+        case changeRecipe(selectedId: UUID)
+        case setSoundSetting
         case proceedToNextStep
         case timerCompleted
     }
@@ -66,31 +68,22 @@ struct TimerReducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                guard let selectedRecipeIdString: String =  UserDefaultsRepository.get(
+                guard let selectedRecipeIdString: String = UserDefaultsRepository.get(
                     forKey: .selectedRecipeId
                 )
                 else { return Effect<Action>.none }
+                
                 guard let selectedRecipeId = UUID(uuidString: selectedRecipeIdString)
                 else { return Effect<Action>.none }
                 
-                let fetchPredicate = FetchDescriptor<Recipe>(
-                    predicate: Recipe.findByIdPredicate(selectedRecipeId)
-                )
-                guard let selectedRecipe = try? context.fetch(fetchPredicate).first
-                else { return Effect<Action>.none }
-                
-                state.recipe = selectedRecipe
-                state.currentStep = selectedRecipe.steps
-                    .first(where: { $0.order == 0 }) ?? Step()
-                let lastStep = state.recipe.steps
-                    .last(where: { $0.order == state.recipe.steps.count - 1 }) ?? Step()
-                state.totalSeconds = lastStep.accumulatedSeconds ?? 0
-                state.totalWater = lastStep.accumulatedWater ?? 0
-                
-                state.isSoundOn = UserDefaultsRepository.get(
-                    forKey: .isSoundOn
-                )
-                return .none
+                if state.recipe.id != selectedRecipeId {
+                    return .concatenate(
+                        .send(.changeRecipe(selectedId: selectedRecipeId)),
+                        .send(.setSoundSetting)
+                    )
+                } else {
+                    return .send(.setSoundSetting)
+                }
                 
             case .startTimer:
                 if state.isSoundOn {
@@ -130,6 +123,28 @@ struct TimerReducer {
                 }
                 return .none
                 
+            case .changeRecipe(let selectedRecipeId):
+                let fetchPredicate = FetchDescriptor<Recipe>(
+                    predicate: Recipe.findByIdPredicate(selectedRecipeId)
+                )
+                guard let selectedRecipe = try? context.fetch(fetchPredicate).first
+                else { return Effect<Action>.none }
+                
+                state.recipe = selectedRecipe
+                state.currentStep = selectedRecipe.steps
+                    .first(where: { $0.order == 0 }) ?? Step()
+                let lastStep = state.recipe.steps
+                    .last(where: { $0.order == state.recipe.steps.count - 1 }) ?? Step()
+                state.totalSeconds = lastStep.accumulatedSeconds ?? 0
+                state.totalWater = lastStep.accumulatedWater ?? 0
+                return .none
+                
+            case .setSoundSetting:
+                state.isSoundOn = UserDefaultsRepository.get(
+                    forKey: .isSoundOn
+                )
+                return .none
+                
             case .proceedToNextStep:
                 if state.isSoundOn {
                     AudioServicesPlaySystemSound(1107)
@@ -152,10 +167,6 @@ struct TimerReducer {
                 }
                 state.timerState = .complete
                 return .cancel(id: CancelID.timer)
-                
-                func checkSameRecipe() {
-                    
-                }
             }
         }
     }

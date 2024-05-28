@@ -7,12 +7,6 @@
 
 import Foundation
 
-final class UserDefaultConstant {
-    static let selectedRecipeId = "selectedRecipeId"
-    static let isFirstInstall = "isFirstInstall"
-    static let isSoundOn = "isSoundOn"
-}
-
 enum UserDefaultsKey: String {
     case selectedRecipeId
     case isFirstInstall

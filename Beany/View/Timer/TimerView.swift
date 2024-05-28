@@ -209,9 +209,6 @@ struct TimerView: View {
         .onAppear {
             store.send(.onAppear)
         }
-        .onDisappear {
-            store.send(.resetTimer)
-        }
     }
     
     func getContrastTextColorOnBackground(_ condition: Bool) -> Color {

@@ -39,7 +39,7 @@
 		BCD2169B2BFBA9D200D4EB44 /* RecipeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216952BFBA9D200D4EB44 /* RecipeBuilder.swift */; };
 		BCD2169C2BFBA9D200D4EB44 /* RecipeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216962BFBA9D200D4EB44 /* RecipeLink.swift */; };
 		BCD2169D2BFBA9D200D4EB44 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD216972BFBA9D200D4EB44 /* RecipeView.swift */; };
-		BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */; };
+		BCD52D032BE9312300059E67 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD52D022BE9312300059E67 /* UserDefaultsRepository.swift */; };
 		BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CC2BEA938A0029A463 /* SettingView.swift */; };
 		BCE436CF2BEA9C340029A463 /* CommonConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436CE2BEA9C340029A463 /* CommonConstant.swift */; };
 		BCE436D12BEA9DED0029A463 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE436D02BEA9DEC0029A463 /* AlertHelper.swift */; };
@@ -77,7 +77,7 @@
 		BCD216952BFBA9D200D4EB44 /* RecipeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeBuilder.swift; sourceTree = "<group>"; };
 		BCD216962BFBA9D200D4EB44 /* RecipeLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeLink.swift; sourceTree = "<group>"; };
 		BCD216972BFBA9D200D4EB44 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConstant.swift; sourceTree = "<group>"; };
+		BCD52D022BE9312300059E67 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		BCE436CC2BEA938A0029A463 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BCE436CE2BEA9C340029A463 /* CommonConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstant.swift; sourceTree = "<group>"; };
 		BCE436D02BEA9DEC0029A463 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				BC83D0122BE88FC800B2DB6F /* Recipe.swift */,
-				BCD52D022BE9312300059E67 /* UserDefaultConstant.swift */,
+				BCD52D022BE9312300059E67 /* UserDefaultsRepository.swift */,
 				BC1D21552BE94AB600D0DD1B /* Step.swift */,
 				BC1D21572BE9520600D0DD1B /* FirstInstallAction.swift */,
 				BC1D21592BEA147400D0DD1B /* Author.swift */,
@@ -389,7 +389,7 @@
 				BC0C7CFA2C049C5E00DBE456 /* SettingLink.swift in Sources */,
 				BC0C7CF82C049C5700DBE456 /* SettingBuilder.swift in Sources */,
 				BC83D0132BE88FC800B2DB6F /* Recipe.swift in Sources */,
-				BCD52D032BE9312300059E67 /* UserDefaultConstant.swift in Sources */,
+				BCD52D032BE9312300059E67 /* UserDefaultsRepository.swift in Sources */,
 				BC8E1C942BEB5CE8008AC5C4 /* RecipeAddLink.swift in Sources */,
 				BC1D21582BE9520600D0DD1B /* FirstInstallAction.swift in Sources */,
 				BCE436CD2BEA938A0029A463 /* SettingView.swift in Sources */,
