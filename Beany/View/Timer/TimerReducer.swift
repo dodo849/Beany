@@ -60,6 +60,8 @@ struct TimerReducer {
     
     @Dependency(\.continuousClock) var clock
     @Dependency(\.timerCompleteSoundHelper) var timerCompleteSoundHelper
+    @Dependency(\.timerToggleSoundHelper) var timerToggleSoundHelper
+    @Dependency(\.nextStepSoundHelper) var nextStepSoundHelper
     private enum CancelID { case timer }
     private var context = sharedModelContainer.mainContext
     
@@ -83,7 +85,7 @@ struct TimerReducer {
                 return .none
                 
             case .startTimer:
-                SoundSettingDecorator(TimerToggleSoundHelper()).play()
+                timerToggleSoundHelper.play()
                 
                 state.timerState.toggle()
                 return .run { [isTimerActive = state.timerState == .active] send in
@@ -136,7 +138,7 @@ struct TimerReducer {
                 return .none
                 
             case .proceedToNextStep:
-                SoundSettingDecorator(NextStepSoundHelper()).play()
+                nextStepSoundHelper.play()
                 
                 let currentOrder = state.currentStep.order
                 if currentOrder < state.recipe.steps.count - 1,
@@ -149,7 +151,6 @@ struct TimerReducer {
                 
             case .timerCompleted:
                 timerCompleteSoundHelper.play()
-//                SoundHelperDecorator(TimerCompleteSoundHelper()).play()
                 
                 state.timerState = .complete
                 return .cancel(id: CancelID.timer)
