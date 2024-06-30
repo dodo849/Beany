@@ -14,7 +14,10 @@ struct RecipeRowView: View {
     
     @Environment(\.modelContext) var context
     @AppStorage("selectedRecipeId") 
-    var selectedRecipeId: String = UserDefaultsRepository.get(forKey: .selectedRecipeId)
+    var selectedRecipeId: String = UserDefaultsRepository.get(
+        forKey: .selectedRecipeId,
+        ""
+    )
 
     var coordinator: BaseCoordinator<RecipeLink> = BaseCoordinator<RecipeLink>()
     

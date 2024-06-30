@@ -68,7 +68,8 @@ struct TimerReducer {
             switch action {
             case .onAppear:
                 guard let selectedRecipeIdString: String = UserDefaultsRepository.get(
-                    forKey: .selectedRecipeId
+                    forKey: .selectedRecipeId,
+                    ""
                 )
                 else { return Effect<Action>.none }
                 

@@ -27,7 +27,8 @@ struct SoundSettingDecorator: SoundHelper {
     
     var isSoundOn: Bool {
         return UserDefaultsRepository.get(
-            forKey: .isSoundOn
+            forKey: .isSoundOn,
+            false
         )
     }
 }

@@ -38,7 +38,7 @@ struct SettingView: View {
             coordinator.path.removeLast()
         }
         .onAppear {
-            isSoundOn = UserDefaultsRepository.get(forKey: .isSoundOn)
+            isSoundOn = UserDefaultsRepository.get(forKey: .isSoundOn, false)
         }
     }
 }

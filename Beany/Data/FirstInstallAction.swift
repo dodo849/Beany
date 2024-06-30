@@ -31,7 +31,8 @@ final class FirstInstallAction {
     
     func execute() {
         let hasBeenInstalledBefore: Bool = UserDefaultsRepository.get(
-            forKey: .isFirstInstall
+            forKey: .isFirstInstall,
+            false
         )
 
         if !hasBeenInstalledBefore {
