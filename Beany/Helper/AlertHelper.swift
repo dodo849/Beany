@@ -14,9 +14,6 @@ final class AlertHelper {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
-//        alert.addAction(
-//            .init(title: "확인",
-//                  style: .cancel))
         if action != nil {
             alert.addAction(action!)
             alert.addAction(

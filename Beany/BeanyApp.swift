@@ -11,6 +11,15 @@ import SwiftData
 import ComposableArchitecture
 import StackCoordinator
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        return true
+    }
+}
+
 var sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Recipe.self,
@@ -31,6 +40,8 @@ var sharedModelContainer: ModelContainer = {
 
 @main
 struct BeanyApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             RootBuilder { _ in

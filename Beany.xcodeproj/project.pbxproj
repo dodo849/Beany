@@ -14,6 +14,7 @@
 		BC1D215A2BEA147400D0DD1B /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D21592BEA147400D0DD1B /* Author.swift */; };
 		BC1D215C2BEA1D1200D0DD1B /* TimeFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */; };
 		BC2E5F182BEA36BB00B5FA4D /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */; };
+		BC35CD8D2C18C42000888F80 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC35CD8C2C18C42000888F80 /* Dependency.swift */; };
 		BC53B0962C0465EB00549B3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BC53B0952C0465EB00549B3D /* .swiftlint.yml */; };
 		BC6D847A2BE7720D00C103E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D84792BE7720D00C103E9 /* Item.swift */; };
 		BC6D847C2BE7720F00C103E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D847B2BE7720F00C103E9 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		BC1D21592BEA147400D0DD1B /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		BC1D215B2BEA1D1200D0DD1B /* TimeFormatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatHelper.swift; sourceTree = "<group>"; };
 		BC2E5F172BEA36BB00B5FA4D /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
+		BC35CD8C2C18C42000888F80 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		BC53B0952C0465EB00549B3D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BC6D84722BE7720D00C103E9 /* Beany.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beany.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6D84792BE7720D00C103E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -124,9 +126,10 @@
 		BC6D84742BE7720D00C103E9 /* Beany */ = {
 			isa = PBXGroup;
 			children = (
+				BCDB80192C18A005004C75F7 /* DI */,
 				BC0C7CF62C049BBF00DBE456 /* DesignSystem */,
-				BC83D0112BE88FBF00B2DB6F /* Data */,
 				BC83D00D2BE88C9F00B2DB6F /* View */,
+				BC83D0112BE88FBF00B2DB6F /* Data */,
 				BC83D0072BE7FF2900B2DB6F /* Helper */,
 				BC7F6B7D2BFB8BC5001919DC /* BeanyApp.swift */,
 				BC6D84792BE7720D00C103E9 /* Item.swift */,
@@ -187,11 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				BC7F6B7A2BFB70FF001919DC /* TestWave */,
-				BC83D0292BE8C5A500B2DB6F /* Util */,
 				BCE436CA2BEA935F0029A463 /* Setting */,
 				BCD216982BFBA9D200D4EB44 /* Recipe */,
 				BC83D01D2BE8AE5C00B2DB6F /* RecipeAdd */,
 				BC6D84A42BE7769D00C103E9 /* Timer */,
+				BC83D0292BE8C5A500B2DB6F /* Util */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,14 @@
 			name = Recipe;
 			path = Beany/View/Recipe;
 			sourceTree = SOURCE_ROOT;
+		};
+		BCDB80192C18A005004C75F7 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				BC35CD8C2C18C42000888F80 /* Dependency.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
 		};
 		BCE436CA2BEA935F0029A463 /* Setting */ = {
 			isa = PBXGroup;
@@ -376,6 +387,7 @@
 				BC83D00C2BE8894D00B2DB6F /* WaveView.swift in Sources */,
 				BC83D0182BE8941200B2DB6F /* TimerBuilder.swift in Sources */,
 				BC7F6B7E2BFB8BC5001919DC /* BeanyApp.swift in Sources */,
+				BC35CD8D2C18C42000888F80 /* Dependency.swift in Sources */,
 				BCE436CF2BEA9C340029A463 /* CommonConstant.swift in Sources */,
 				BC83D01A2BE8942600B2DB6F /* TimerLink.swift in Sources */,
 				BCD2169C2BFBA9D200D4EB44 /* RecipeLink.swift in Sources */,
