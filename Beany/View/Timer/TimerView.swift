@@ -12,7 +12,6 @@ import ComposableArchitecture
 import StackCoordinator
 
 struct TimerView: View {
-    private let WAVE_CIRCLE_SIZE: CGFloat = 400
     private let TOP_BAR_HEIGHT = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     private let TOP_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 85
     private let MIDDLE_TEXT_COLOR_CHANGE_PERCENTAGE: CGFloat = 48

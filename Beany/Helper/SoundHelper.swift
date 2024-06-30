@@ -12,15 +12,7 @@ protocol SoundHelper {
     func play()
 }
 
-extension SoundHelper {
-    var isSoundOn: Bool {
-        return UserDefaultsRepository.get(
-            forKey: .isSoundOn
-        )
-    }
-}
-
-struct SoundHelperProxy: SoundHelper {
+struct SoundSettingDecorator: SoundHelper {
     private let soundHelper: SoundHelper
     
     init(_ soundHelper: SoundHelper) {
@@ -31,6 +23,18 @@ struct SoundHelperProxy: SoundHelper {
         if isSoundOn {
             soundHelper.play()
         }
+    }
+    
+    var isSoundOn: Bool {
+        return UserDefaultsRepository.get(
+            forKey: .isSoundOn
+        )
+    }
+}
+
+extension SoundHelper {
+    var with: SoundSettingDecorator {
+        SoundSettingDecorator(self)
     }
 }
 
